@@ -26,11 +26,10 @@
       title: { en: 'Furniture design adviser', ur: 'فرنیچر ڈیزائن مشیر' },
       role: { en: 'Your room. Your family. Your style.', ur: 'آپ کا کمرہ، آپ کی پسند' },
       description: {
-        en: 'Plan a family baithak, a carved Chinioti bed, or a dining set around your room and the way your family uses it.',
-        ur: 'گھر کی بیٹھک، چنیوٹی نقش دار پلنگ یا ڈائننگ سیٹ اپنے کمرے اور گھر والوں کی ضرورت کے مطابق بنوانے پر بات کریں۔',
+        en: 'Choose a bedroom, sofa, door, wardrobe or kitchen reference and plan the proportions for your room.',
+        ur: 'بیڈروم، صوفے، دروازے، الماری یا کچن کی تصویر منتخب کریں اور اپنی جگہ کے مطابق سائز پر بات کریں۔',
       },
       action: { en: 'Discuss your design', ur: 'اپنے ڈیزائن پر بات کریں' },
-      image: 'assets/staff-designer.jpg',
       inquiry: {
         en: 'I would like to speak with your furniture design adviser about my room and preferred furniture style. My idea is:',
         ur: 'میں اپنے کمرے اور پسندیدہ فرنیچر کے بارے میں آپ کے ڈیزائن مشیر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا خیال یہ ہے:',
@@ -39,13 +38,12 @@
     {
       id: 'maker',
       title: { en: 'Workshop specialist', ur: 'لکڑی اور کاریگری کے ماہر' },
-      role: { en: 'Sheesham. Carving. The right finish.', ur: 'شیشم، نقش و نگار اور پسند کی پالش' },
+      role: { en: 'Materials. Carving. The right finish.', ur: 'لکڑی، نقش و نگار اور پسند کی پالش' },
       description: {
-        en: 'Discuss sheesham grain, carved details, charpai frames, joinery, and the polish that suits your furniture.',
-        ur: 'شیشم کی لکڑی، نقش و نگار، چارپائی کے فریم، مضبوط جوڑوں اور فرنیچر کے لیے مناسب پالش کی تفصیلات سمجھیں۔',
+        en: 'Discuss suitable materials, carved details, cabinet construction, upholstery and the finish for your furniture.',
+        ur: 'موزوں لکڑی، نقش و نگار، کیبنٹ کی بناوٹ، کپڑے اور مناسب پالش کی تفصیلات سمجھیں۔',
       },
       action: { en: 'Ask about the woodwork', ur: 'کاریگری کے بارے میں پوچھیں' },
-      image: 'assets/staff-maker.jpg',
       inquiry: {
         en: 'I would like to discuss timber, carving, construction, and polish with your workshop specialist. My question is:',
         ur: 'میں لکڑی، نقش و نگار، بناوٹ اور پالش کے بارے میں آپ کے ماہر کاریگر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا سوال یہ ہے:',
@@ -60,7 +58,6 @@
         ur: 'آرڈر سے پہلے سائز، تعداد، پاکستانی روپے میں بجٹ، ترسیل اور فٹنگ کی ضروریات پر واضح بات کریں۔',
       },
       action: { en: 'Plan your project', ur: 'اپنے کام کی منصوبہ بندی کریں' },
-      image: 'assets/staff-support.jpg',
       inquiry: {
         en: 'I would like help planning the sizes, quantities, budget, and delivery requirements for my furniture project. My requirements are:',
         ur: 'میں اپنے فرنیچر کے کام کے سائز، تعداد، بجٹ اور ترسیل کی منصوبہ بندی کے لیے رہنمائی چاہتا/چاہتی ہوں۔ میری ضروریات یہ ہیں:',
@@ -82,8 +79,8 @@
       name: 'M. A.', initials: 'MA', rating: 4,
       city: { en: 'Islamabad', ur: 'اسلام آباد' },
       text: {
-        en: 'I could save a few baithak and dining ideas, then put our measurements and budget into one clear inquiry.',
-        ur: 'بیٹھک اور ڈائننگ کے چند پسندیدہ ڈیزائن محفوظ کر کے اپنے ناپ اور بجٹ کی تفصیل ایک ہی درخواست میں لکھ سکا۔',
+        en: 'I could save a few bedroom and door ideas, then put our measurements and budget into one clear inquiry.',
+        ur: 'بیڈروم اور دروازے کے چند پسندیدہ ڈیزائن محفوظ کر کے اپنے ناپ اور بجٹ کی تفصیل ایک ہی درخواست میں لکھ سکا۔',
       },
       sample: true,
     },
@@ -130,15 +127,9 @@
 
   function createProfile(profile) {
     const card = element('article', 'team-card');
-    const photo = element('div', 'team-photo');
-    const image = element('img');
-    image.src = profile.image;
-    image.alt = `${profile.title.en}, illustrative profile — ${profile.title.ur} کی مثالی تصویر`;
-    image.loading = 'lazy';
-    image.decoding = 'async';
-    image.width = 720;
-    image.height = 900;
-    photo.append(image, bilingual('span', 'demo-tag', 'Demo profile', 'نمونہ پروفائل'));
+    const photo = element('div', 'team-photo team-symbol');
+    const symbol = profile.id === 'designer' ? 'i-ruler' : profile.id === 'maker' ? 'i-wood' : 'i-grid';
+    photo.append(icon(symbol), bilingual('span', 'demo-tag', 'How we can help', 'آپ کی رہنمائی'));
 
     const content = element('div', 'team-content');
     content.append(

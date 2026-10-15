@@ -44,19 +44,16 @@ def run(url, chromium):
         )
         for index, role in enumerate(("designer", "maker", "coordinator")):
             card = page.locator("#team-grid .team-card").nth(index)
-            expect(card.locator(".demo-tag .bi-en")).to_have_text("Demo profile")
-            expect(card.locator(".demo-tag .bi-ur")).to_have_text("نمونہ پروفائل")
+            expect(card.locator(".demo-tag .bi-en")).to_have_text("How we can help")
+            expect(card.locator(".demo-tag .bi-ur")).to_have_text("آپ کی رہنمائی")
             for selector in (".team-title", ".team-description", ".team-role", ".team-contact-label"):
                 expect(card.locator(f"{selector} .bi-en")).to_be_visible()
                 expect(card.locator(f"{selector} .bi-ur")).to_be_visible()
                 expect(card.locator(f"{selector} .bi-ur")).to_have_attribute("lang", "ur")
                 expect(card.locator(f"{selector} .bi-ur")).to_have_attribute("dir", "rtl")
-            image = card.locator("img")
-            image.scroll_into_view_if_needed()
-            page.wait_for_function(
-                "selector => { const image = document.querySelector(selector); return image.complete && image.naturalWidth > 0; }",
-                arg=f"#team-grid .team-card:nth-child({index + 1}) img",
-            )
+            expect(card.locator("img")).to_have_count(0)
+            expect(card.locator(".team-symbol > svg")).to_have_count(1)
+            card.scroll_into_view_if_needed()
             button = card.locator(".team-contact")
             prompt = button.get_attribute("data-quote-message").strip()
             assert "\n" in prompt and re.search(r"[\u0600-\u06ff]", prompt)
@@ -72,7 +69,7 @@ def run(url, chromium):
             page.locator("#quote-message").fill("")
             page.locator('#quote-dialog [data-close-dialog]').click()
             expect(button).to_be_focused()
-        checks.append("Three loaded staff profiles show both languages and demo labels together; bilingual inquiries, deduplication, Escape and focus return")
+        checks.append("Three icon-based guidance cards show both languages without fictional staff portraits; bilingual inquiries, deduplication, Escape and focus return")
 
         expect(page.locator("#reviews-track .review-card")).to_have_count(3)
         expect(page.locator("#reviews-track .review-text .bi-en")).to_have_count(3)

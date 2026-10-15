@@ -1,218 +1,771 @@
-[
-  {
-    "files": [
-      "assets/dm-sans-regular.woff2",
-      "assets/dm-sans-medium.woff2"
-    ],
-    "family": "DM Sans",
-    "source": "https://www.npmjs.com/package/@fontsource/dm-sans",
-    "licence": "SIL Open Font License 1.1",
-    "licence_file": "assets/dm-sans-LICENSE.txt",
-    "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
-  },
-  {
-    "files": [
-      "assets/cormorant-regular.woff2",
-      "assets/cormorant-italic.woff2"
-    ],
-    "family": "Cormorant Garamond",
-    "source": "https://www.npmjs.com/package/@fontsource/cormorant-garamond",
-    "licence": "SIL Open Font License 1.1",
-    "licence_file": "assets/cormorant-garamond-LICENSE.txt",
-    "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
-  },
-  {
-    "files": [
-      "assets/fonts/noto-nastaliq-urdu-arabic-400-normal.woff2",
-      "assets/fonts/noto-nastaliq-urdu-arabic-600-normal.woff2"
-    ],
-    "family": "Noto Nastaliq Urdu",
-    "source": "https://www.npmjs.com/package/@fontsource/noto-nastaliq-urdu",
-    "package_version": "5.3.0",
-    "licence": "SIL Open Font License 1.1",
-    "licence_file": "assets/fonts/noto-nastaliq-urdu-OFL.txt",
-    "integrity_note": "Downloaded package tarball matched registry SHA-512 integrity."
-  },
-  {
-    "file": "assets/hero.jpg",
-    "source": "original_generated",
-    "description": "Refined Pakistani family baithak/aangan with coordinated classic carved timber sofa, two armchairs, timber coffee table, cream cushions, Ajrak accents and a charpai.",
-    "png_path": "/workspace/generated_images/exec-c044d8e3-127a-457a-9e72-9c903900fe5b.png",
-    "size": [
-      1536,
-      1024
-    ],
-    "bytes": 388051,
-    "sha256": "742f64e5ce67d4840d3ebb9ea31c75a9e8c748e66f1c72cea17a244fabe74a99",
-    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
-  },
-  {
-    "file": "assets/staff-designer.jpg",
-    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
-    "description": "A fictional Pakistani female furniture designer in a warm timber design studio.",
-    "original_generated_file": "/workspace/generated_images/exec-50119cf0-3965-48ae-8a4e-6e73e8e3dc8f.png",
-    "size": [
-      700,
-      700
-    ],
-    "bytes": 89675,
-    "sha256": "455453fb6277920828e1fae6452e314abe8195a5c02e594eb046ac9dc4cf9c8d",
-    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
-  },
-  {
-    "file": "assets/staff-maker.jpg",
-    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
-    "description": "A fictional middle-aged Pakistani male timber artisan in a warm carpentry workshop.",
-    "original_generated_file": "/workspace/generated_images/exec-b6543e43-4b32-4f99-a6d4-6e54856b05fb.png",
-    "size": [
-      700,
-      700
-    ],
-    "bytes": 111737,
-    "sha256": "65bac2158de97ae6e3c74e6467b710210537e33682cc5abbb48da1b4c7a364c1",
-    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
-  },
-  {
-    "file": "assets/staff-support.jpg",
-    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
-    "description": "A fictional young adult Pakistani male project coordinator in a contemporary furniture studio.",
-    "original_generated_file": "/workspace/generated_images/exec-aa6efb71-2214-4b68-a78d-ce11ef6bebef.png",
-    "size": [
-      700,
-      700
-    ],
-    "bytes": 88060,
-    "sha256": "e323fa3105d5cd43dd831416102d3deadffebfe75f488a39d714e777d039a171",
-    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
-  },
-  {
-    "file": "assets/hero-majlis.jpg",
-    "source": "original_generated",
-    "description": "Cinematic indoor Pakistani family baithak with heavily carved dark Chinioti-style sheesham sofa set, cream upholstery, Ajrak accents, timber jali screens and regional floor tile.",
-    "png_path": "/workspace/generated_images/exec-7fba942e-4e71-443f-b86c-a48d29a92f5b.png",
-    "size": [
-      1536,
-      1024
-    ],
-    "bytes": 430916,
-    "sha256": "d5c4a404cc223c080a425e384e135c48577a1bd326cf6aae244426d1bf65c37d",
-    "usage_note": "Original AI-generated Pakistani furniture design/woodcraft concept. This is not a photograph of an actual Shahbaz Furniture product, customer home, craftsperson or workshop, and is not business proof."
-  },
-  {
-    "file": "assets/craft-detail.jpg",
-    "source": "original_generated",
-    "description": "Close-up illustrative Pakistani artisan hands carving floral sheesham-inspired furniture detail at a traditional timber workshop bench; no identifiable face.",
-    "png_path": "/workspace/generated_images/exec-6c10c7f6-17ca-4095-8b7c-02cfa97357dd.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 265324,
-    "sha256": "c0c8f555d94c828043474f96a4d5133039a8d6df725ce70ca38148b381095641",
-    "usage_note": "Original AI-generated Pakistani furniture design/woodcraft concept. This is not a photograph of an actual Shahbaz Furniture product, customer home, craftsperson or workshop, and is not business proof."
-  },
-  {
-    "file": "assets/design-1.jpg",
-    "description": "Fresh original Pakistani Chinioti sheesham double-bed concept with deep floral carving, stepped pointed-arch and jali crest headboard, coordinated bedside cabinets, cream linen and Ajrak accents in a local plaster-and-tile bedroom.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-2485db3a-33d7-41c8-ac92-fcc01189b57a.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 248059,
-    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
-    "sha256": "d71a71e3bde4656723e6c9e29cb9a6a63b0b2d1a2791773adffd64956e925470"
-  },
-  {
-    "file": "assets/design-2.jpg",
-    "description": "Fresh original Pakistani six-seat sheesham dining-set concept with deeply carved straight timber frames, pointed-arch chair crests, cream upholstery and an Ajrak runner in a jali-window family dining room.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-7fa0a811-8ad9-4230-9eac-306ca7b796cf.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 245245,
-    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
-    "sha256": "361961d50a25cb5a2dd742c2674e5371bfd946e15ca0897d1bb5157e737add66"
-  },
-  {
-    "file": "assets/design-3.jpg",
-    "description": "Fresh original traditional Pakistani baithak concept with a heavily Chinioti-carved timber sofa, two armchairs and low coffee table, cream cushions and a small Ajrak accent in a warm plaster-and-regional-tile family room.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-a363ccb4-bb12-4ccb-99f1-d2c058267898.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 249489,
-    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
-    "sha256": "04dd23d93e03a46b58d82fc1c5468fd61637a86b00b63bf3f6c8bd6c3618dd8f"
-  },
-  {
-    "file": "assets/design-4.jpg",
-    "description": "Fresh original Pakistani handwoven charpai concept with traditional diagonal cotton-rope weave, four handturned carved solid-wood corner legs and a folded Ajrak cloth in a Punjabi household aangan.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-be876056-ba72-4a9b-b2bf-5bd46fccbd4e.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 249540,
-    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
-    "sha256": "ee98bc6554ffcca1ccecde210d20d3e6ccd8a75e1f81ce9ae4c92c672f862577"
-  },
-  {
-    "file": "assets/design-5.jpg",
-    "description": "Pakistani heavy carved three-door sheesham wardrobe in a modest local family bedroom",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-acfd53e2-334c-4a2b-9abb-ee1af3be974c.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 210282,
-    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
-    "sha256": "8e56b914f7b8ccb3d7de180aaee65da3c6dc365240d538ca50b5d022cbcc0d22"
-  },
-  {
-    "file": "assets/design-6.jpg",
-    "description": "Pakistani carved sheesham entrance door and jali surround in a local brick-and-plaster home",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-51077784-52d6-4eb6-bc1d-bee7f5c96564.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 210160,
-    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
-    "sha256": "616a980eefa6352162a4e2e91934dc0caeffd91e919225fbf0196cfb363774cb"
-  },
-  {
-    "file": "assets/design-7.jpg",
-    "description": "Pakistani heavy carved sheesham study desk with brass-pull drawers and coordinated chair",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-bdec9d3b-cae0-4627-b952-ec5c5042cf19.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 225035,
-    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
-    "sha256": "cfad1f4bbf592c43b0e3f8449e5b84ac7323c91806c26b170a706faa7d0755b6"
-  },
-  {
-    "file": "assets/design-8.jpg",
-    "description": "Pakistani heavy carved two-door sheesham jali console with a takht-inspired apron and turned legs",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-07427ad2-4364-4e16-9d9f-e5cfb37454c2.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 207946,
-    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
-    "sha256": "d8fecbb6aac259a78e7af94c57c199dc93b4971b8a774736fa18703819c7fb01"
-  }
-]
+{
+  "photographs": [
+    {
+      "file": "assets/real/photo-01.jpg",
+      "thumbnail": "assets/real/thumbs/photo-01.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.47 PM.jpeg",
+      "original_sha256": "1dd1487df8a4dd146ee0be2d78bc31b52b30c66387c6d2fc2961ef7943bc3aff",
+      "output_sha256": "e374de37777dce21c93b2e137b7afcea0e90b36aaf2b4ee8c5d67c49c05d96b9",
+      "dimensions": [
+        1137,
+        1383
+      ],
+      "bytes": 212540,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "@branded_90",
+        "Pillow: FURNITURE / STUDIO; large initials partly cropped and uncertain."
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-02.jpg",
+      "thumbnail": "assets/real/thumbs/photo-02.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.47 PM (1).jpeg",
+      "original_sha256": "89647c7fd9c6f7d0f59d780372c54e816bd3d03442a74ed3b0ea4f7cacbbc661",
+      "output_sha256": "89647c7fd9c6f7d0f59d780372c54e816bd3d03442a74ed3b0ea4f7cacbbc661",
+      "dimensions": [
+        960,
+        1280
+      ],
+      "bytes": 126985,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-03.jpg",
+      "thumbnail": "assets/real/thumbs/photo-03.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.48 PM.jpeg",
+      "original_sha256": "d2031a0c12c87f4ddc75c3d3ed529fe45e0e15705d81a660affef550e4eeafbc",
+      "output_sha256": "ca5163ac22c27b979dec01f39881adac1bf4ec2593547e5333891d9f87f8436c",
+      "dimensions": [
+        1400,
+        1052
+      ],
+      "bytes": 230285,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "@furniturepeshawar"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-04.jpg",
+      "thumbnail": "assets/real/thumbs/photo-04.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.48 PM (1).jpeg",
+      "original_sha256": "fc4f2afbb01be484bc7069d91ca82d896d282649a11f9b3d146f14be85042fa7",
+      "output_sha256": "2690ff785b08ab47b19a784c1c600b2ee68e1d86f35974aeb54fcfacb8c75e7c",
+      "dimensions": [
+        1400,
+        1052
+      ],
+      "bytes": 351115,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "@furniturepeshawar"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-05.jpg",
+      "thumbnail": "assets/real/thumbs/photo-05.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.49 PM.jpeg",
+      "original_sha256": "586891a9c2e70ae8c580d031cf6bd4600433269e46fc36022a61382869293086",
+      "output_sha256": "2850333c1650025c4dc5fc31618580448b8ee64a44d359a8a9d14a0ebabc941a",
+      "dimensions": [
+        1400,
+        1052
+      ],
+      "bytes": 267733,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "@furniturepeshawar"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-06.jpg",
+      "thumbnail": "assets/real/thumbs/photo-06.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.49 PM (1).jpeg",
+      "original_sha256": "8b5e5859bea4389ffa2ec51072490552fd1211f9a1437e7ca95bd5945ce0a443",
+      "output_sha256": "8b5e5859bea4389ffa2ec51072490552fd1211f9a1437e7ca95bd5945ce0a443",
+      "dimensions": [
+        738,
+        1163
+      ],
+      "bytes": 88650,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-07.jpg",
+      "thumbnail": "assets/real/thumbs/photo-07.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.49 PM (2).jpeg",
+      "original_sha256": "075fff337a5207e24de9202aad1fec032fd601021e6384d65141b7c5651ef93e",
+      "output_sha256": "d8f80a088844febe63600c1953630e70f91cd58709ef695ac98b8be7b7647b7a",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 231143,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "@furniturepeshawar",
+        "Small repeated protective-film supplier printing: not reliably readable."
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-08.jpg",
+      "thumbnail": "assets/real/thumbs/photo-08.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.50 PM.jpeg",
+      "original_sha256": "d57ece99f291f0b0e933c1310bf92f7d35218ab77a795ab399af1425031a17ea",
+      "output_sha256": "9c5feb7094692245c31e9d3b0e965691d54ba9f26588c5e248325d91dde25201",
+      "dimensions": [
+        1400,
+        1052
+      ],
+      "bytes": 286661,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": "@furniturepeshawar",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-09.jpg",
+      "thumbnail": "assets/real/thumbs/photo-09.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.50 PM (1).jpeg",
+      "original_sha256": "ead9aa4c0275a59fb275c3928fba26339f72a4fce21d535c6dceb5fea3c3db7d",
+      "output_sha256": "b298c9ae76c5298ab24a8e3a87418691e2520fa9720049e630df25555f07c90d",
+      "dimensions": [
+        1241,
+        1268
+      ],
+      "bytes": 425525,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-10.jpg",
+      "thumbnail": "assets/real/thumbs/photo-10.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.51 PM.jpeg",
+      "original_sha256": "899cc3df4a3ebd5d2ba982618308734e96546258ad7f8c8239f48a6fd18e68e9",
+      "output_sha256": "07d4f73b5e28f05ae372a90299cf8bfc5e47097c3e8d318c487756b25e76aed7",
+      "dimensions": [
+        720,
+        507
+      ],
+      "bytes": 79520,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-11.jpg",
+      "thumbnail": "assets/real/thumbs/photo-11.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.51 PM (1).jpeg",
+      "original_sha256": "2f3e4475ddc66e3430421bfbc4b3ba2be7822802939fad75f2f28ab1df27116d",
+      "output_sha256": "15637f00be9fcae20b66573adaa32f1dc2208380a1f8f74e7c3696e311151218",
+      "dimensions": [
+        1135,
+        1386
+      ],
+      "bytes": 549396,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-12.jpg",
+      "thumbnail": "assets/real/thumbs/photo-12.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.51 PM (2).jpeg",
+      "original_sha256": "3c184847fb27b59422a910bd39537263b27d99bd0cd62fd54f84e29e4b8546da",
+      "output_sha256": "d060b51f5b67c262e099d168967ee64582630659486a26c5e4792ef00d9ea25c",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 280707,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-06.jpg",
+      "thumbnail": "assets/real/thumbs/photo-06.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.52 PM.jpeg",
+      "original_sha256": "8b5e5859bea4389ffa2ec51072490552fd1211f9a1437e7ca95bd5945ce0a443",
+      "output_sha256": "8b5e5859bea4389ffa2ec51072490552fd1211f9a1437e7ca95bd5945ce0a443",
+      "dimensions": [
+        738,
+        1163
+      ],
+      "bytes": 88650,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication.",
+      "duplicate_of_photo": 6
+    },
+    {
+      "file": "assets/real/photo-14.jpg",
+      "thumbnail": "assets/real/thumbs/photo-14.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.52 PM (1).jpeg",
+      "original_sha256": "7d4027e4dd5b8a67a60c1b3b8b0a54ade360b5eedc54fe14a08f120f2e502c72",
+      "output_sha256": "4227e8aab83d593a5ecaf4a44feb90154d9736577b4e3cde434822efe6d8f5d8",
+      "dimensions": [
+        1086,
+        895
+      ],
+      "bytes": 221833,
+      "preparation": "Original photograph retained for exact furniture-detail fidelity; optimized thumbnail and website framing",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-15.jpg",
+      "thumbnail": "assets/real/thumbs/photo-15.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.53 PM.jpeg",
+      "original_sha256": "466064c64fcb04f4341d8f6b0398a13b9cb64fccc3b949edc57e5fe1ba108f1c",
+      "output_sha256": "9b3dc6f84b57f6aa36e2f109c0e7f88cd7a56c7aa712988e8def3833a63b12bc",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 227306,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-16.jpg",
+      "thumbnail": "assets/real/thumbs/photo-16.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.53 PM (1).jpeg",
+      "original_sha256": "2e884461888617665a511e32536b189d506d62c271aa90d003808f597a789725",
+      "output_sha256": "2c5121d43ae417a87fed519727df2b9f48fc371e5731e45a7de3d1c9a4f9955b",
+      "dimensions": [
+        1400,
+        991
+      ],
+      "bytes": 338426,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "SOLENE CANE",
+        "SOFA"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-17.jpg",
+      "thumbnail": "assets/real/thumbs/photo-17.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.53 PM (2).jpeg",
+      "original_sha256": "b5571fe2aa2a9b06a0411b79071e5fca67758c2aef451603f4ebda36d07cd27b",
+      "output_sha256": "32e770d9f43ad2914ac45a7fcba9da3ec5fb5ad4c481e94464e3142c96b72e36",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 262304,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "FORTE"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-18.jpg",
+      "thumbnail": "assets/real/thumbs/photo-18.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.54 PM.jpeg",
+      "original_sha256": "cdd61d76198d004faa0a976bb7e2fba44c4e564312163b18ebcb2c295a5e1e86",
+      "output_sha256": "ac7a268e92f3e6a0fde0059e1e8ff10b681ca7b0925888f8ae811da3040b20e1",
+      "dimensions": [
+        1400,
+        1050
+      ],
+      "bytes": 250922,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-19.jpg",
+      "thumbnail": "assets/real/thumbs/photo-19.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.54 PM (1).jpeg",
+      "original_sha256": "9ffb0f6e9a3198c490222932491b22e5cef916e29398c8ed546249e9ba9c8adf",
+      "output_sha256": "2029e8b32be4672e2e3b924d0442d2aeb6d7ba3ac197e0150b3adac0aaa836a5",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 267107,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "FORTE"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-20.jpg",
+      "thumbnail": "assets/real/thumbs/photo-20.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.54 PM (2).jpeg",
+      "original_sha256": "cb42764fe4b81723579e4a8f40f8a64e235ac24e53440e1fa53d1b4f1a5083fd",
+      "output_sha256": "4ec04a3dd5cd8362a4a1cb470d9d760ff92a202643f054ce7aa57a1907fd9736",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 310658,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-21.jpg",
+      "thumbnail": "assets/real/thumbs/photo-21.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.54 PM (3).jpeg",
+      "original_sha256": "26b5f12970c6b888dee4915fd36a7b3a19c8ffc941392431e3968a46b4f32ee9",
+      "output_sha256": "63e056afb8ad20e65b84ea23ba16b714a4b57d4addb3c1d4e6ff43197068913c",
+      "dimensions": [
+        1400,
+        1050
+      ],
+      "bytes": 269947,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-22.jpg",
+      "thumbnail": "assets/real/thumbs/photo-22.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.55 PM.jpeg",
+      "original_sha256": "d37615ea83eb43cfb3b5456bc9a03aa3553dddef0491a003e5d835574dece398",
+      "output_sha256": "4539c51ede6a6805d895015c311871677bf388849ae58106f2ddce9accecc96c",
+      "dimensions": [
+        1207,
+        1303
+      ],
+      "bytes": 565398,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "TikTok",
+        "@meharfurniturehouse"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-23.jpg",
+      "thumbnail": "assets/real/thumbs/photo-23.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.55 PM (1).jpeg",
+      "original_sha256": "34ab923e2dcea816966388f54dd3c50d25dca189ba1d3da9bd10cf8d2db68c71",
+      "output_sha256": "dd2e909d8609d40bf19215a1531e0abda8ff587d34b9d2b9784b3e893d134ec9",
+      "dimensions": [
+        1208,
+        1302
+      ],
+      "bytes": 467220,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-24.jpg",
+      "thumbnail": "assets/real/thumbs/photo-24.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.55 PM (2).jpeg",
+      "original_sha256": "576222e4d8cce16cb8e24f595ab1b3b5393ce1508d013bc4de2cbec1a106dbdd",
+      "output_sha256": "65dc9b2b41a2bbf523d33b1fd0fbeaa40c8987bedaed76da4e890c9c39778790",
+      "dimensions": [
+        1400,
+        1050
+      ],
+      "bytes": 372057,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "KWI",
+        "KASHMIR GROUP",
+        "HG UV",
+        "Kashmir Group",
+        "STAINLESS STEEL KITCHEN SINK",
+        "7843"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-25.jpg",
+      "thumbnail": "assets/real/thumbs/photo-25.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.56 PM.jpeg",
+      "original_sha256": "16e3458b499c4f129fa36434810e8b2b19bf40e85c241f31fabd974916031fbe",
+      "output_sha256": "b52d58c393a8467b41beb2b65d75b23d67fe68b5cbe42b3746feb9fc7e76d4b2",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 287528,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "KWI",
+        "KASHMIR GROUP",
+        "HG UV",
+        "Kashmir Group",
+        "BEST QUALITY"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-26.jpg",
+      "thumbnail": "assets/real/thumbs/photo-26.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.56 PM (1).jpeg",
+      "original_sha256": "9ac8217dfe1380815dd0ea6c33546147b5d95e3842d8b2dae2b084a73e82f98f",
+      "output_sha256": "6377ebe01370b1611aaefafc021ac29c8d6cb39233288c4ead95b6b48355877f",
+      "dimensions": [
+        1400,
+        1050
+      ],
+      "bytes": 382618,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "KWI",
+        "KASHMIR GROUP",
+        "HG UV",
+        "Kashmir Group"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-27.jpg",
+      "thumbnail": "assets/real/thumbs/photo-27.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.56 PM (2).jpeg",
+      "original_sha256": "2e4bc2df599621e5bf7044b1d01525466a5ff0e080c53e91ffd108d78cc1becd",
+      "output_sha256": "71724630a589ef4824a102dd6321e1ecb0724721ce1fb5849a67d8bb4bb90f10",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 377984,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "821"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-28.jpg",
+      "thumbnail": "assets/real/thumbs/photo-28.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.57 PM.jpeg",
+      "original_sha256": "2c4000100c82c60d24a1cd1b0fffdc0d247b94d05a45560234dcaba545a8ed8b",
+      "output_sha256": "6408a20b3e0c91d1e0c27ad8dbf1754a6af5fe3210e7dd86fc7552da4f9bb22a",
+      "dimensions": [
+        921,
+        1400
+      ],
+      "bytes": 392715,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-11.jpg",
+      "thumbnail": "assets/real/thumbs/photo-11.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.57 PM (1).jpeg",
+      "original_sha256": "2f3e4475ddc66e3430421bfbc4b3ba2be7822802939fad75f2f28ab1df27116d",
+      "output_sha256": "15637f00be9fcae20b66573adaa32f1dc2208380a1f8f74e7c3696e311151218",
+      "dimensions": [
+        1135,
+        1386
+      ],
+      "bytes": 549396,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": "",
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication.",
+      "duplicate_of_photo": 11
+    },
+    {
+      "file": "assets/real/photo-30.jpg",
+      "thumbnail": "assets/real/thumbs/photo-30.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.57 PM (2).jpeg",
+      "original_sha256": "76169781c5ae117945ee85ab7f948321eb85650aebe6a92b4ff60e098d10f088",
+      "output_sha256": "829e5c66a8f4bbfa73931416d0161b0b1bf5da3132a7cd390d93eb72ee83c327",
+      "dimensions": [
+        1400,
+        1092
+      ],
+      "bytes": 264455,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "PLATINUM"
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-31.jpg",
+      "thumbnail": "assets/real/thumbs/photo-31.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.57 PM (3).jpeg",
+      "original_sha256": "203ccb4ac4288927ce7e365c245f40eb0c01265a527c47f18be89421e7a07dca",
+      "output_sha256": "9104db0a3d4979a8610c8500b67c0825d438b0d6b4ad4b65d6440d85e29d8c0c",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 435530,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-32.jpg",
+      "thumbnail": "assets/real/thumbs/photo-32.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.58 PM.jpeg",
+      "original_sha256": "bb952a583fbf0b7b585cec681d5b9b523d969a73646be1868e52b23622b556c0",
+      "output_sha256": "12a0d78d66bc873d9d70aa343afa82aaaabbc6548f93edb0d92cb83e9f9e7e68",
+      "dimensions": [
+        1400,
+        1050
+      ],
+      "bytes": 256154,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-33.jpg",
+      "thumbnail": "assets/real/thumbs/photo-33.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.58 PM (1).jpeg",
+      "original_sha256": "38683e0a99354db51a746b70526399c470ed6f6f2cc276dfcd4fedb326af7bd8",
+      "output_sha256": "eddabf00f8b6a76d82e4d808a610f66f53a2493bbf1d9dfee6c0bf1fec7d1626",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 204586,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-34.jpg",
+      "thumbnail": "assets/real/thumbs/photo-34.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.58 PM (2).jpeg",
+      "original_sha256": "3aed518aeeb76269009d2262f13fc7cacd1ccb1fc933a24ecf5062645180cff0",
+      "output_sha256": "ba0eb5eb986184812d42865c1a2976798fddf9043d739953c0b6c296f09eecb1",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 313339,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-35.jpg",
+      "thumbnail": "assets/real/thumbs/photo-35.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.59 PM.jpeg",
+      "original_sha256": "63bd8dd250ac1917a365da4702ad88ec55280fe97d89ba2f051383d6ab3a258f",
+      "output_sha256": "babc4518da6f6afce75211815526ba1a49bab46ea2e8be2780421a88aaa8b0c4",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 406730,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-36.jpg",
+      "thumbnail": "assets/real/thumbs/photo-36.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.59 PM (1).jpeg",
+      "original_sha256": "9cf0acbc17a257aef41053e0b68f3ba9e5e11e729e0dc4bcc094085f7929d949",
+      "output_sha256": "5193d96b86cf2ad4784973ccc730c6e9451d7de2be2f7e28bf0c7443e81a5338",
+      "dimensions": [
+        815,
+        1400
+      ],
+      "bytes": 221134,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-37.jpg",
+      "thumbnail": "assets/real/thumbs/photo-37.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.44.59 PM (2).jpeg",
+      "original_sha256": "4709d2f74cc5c66f26efd9e1f9ad7db8ca062a6f2713efc17384a835835c51b1",
+      "output_sha256": "8fa5d48aecbddefabd8df91ba5c3955fb3fdb98e9b1607fa3fee2734c3a46d0d",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 203377,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-38.jpg",
+      "thumbnail": "assets/real/thumbs/photo-38.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.45.00 PM.jpeg",
+      "original_sha256": "3cb00babb87e538fbbbb2aefcfb5baa54543404fc00cc51cc51faca687fd4f94",
+      "output_sha256": "2f08fa9fb6097c28818c832cba056933827101c640d81bd69d15cd1989296186",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 182053,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "A tiny red sticker remains illegible; no readable product wording."
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-39.jpg",
+      "thumbnail": "assets/real/thumbs/photo-39.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.45.00 PM (1).jpeg",
+      "original_sha256": "3cd9790cf5d62e1e6ba3db46e83ee7f7ef952b9cdec11329c710d85f997be3d5",
+      "output_sha256": "456525f4ecedc585eb05f79cbc340f9a1dec255d258fe3a989e458c8622d85d1",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 160984,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-40.jpg",
+      "thumbnail": "assets/real/thumbs/photo-40.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.45.00 PM (2).jpeg",
+      "original_sha256": "13257fe676d86d29aea4656199ef4d1ef815778569a9f58ff7240abb27c71d75",
+      "output_sha256": "c874ba62fe1f3a52b62ab7300ea344a8d2bed5dfe44c08e5a729693437ef2609",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 333345,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-41.jpg",
+      "thumbnail": "assets/real/thumbs/photo-41.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.45.01 PM.jpeg",
+      "original_sha256": "f8ca9732811ca0eb50f3fda2f53778ffbfbc5f4307f635719ff83dd2e4e3f368",
+      "output_sha256": "2115ae8a74dd2030b0ef68929c1188446503082179b9e967881e243d4467778f",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 168247,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    },
+    {
+      "file": "assets/real/photo-42.jpg",
+      "thumbnail": "assets/real/thumbs/photo-42.jpg",
+      "source": "User-supplied WhatsApp photo archive",
+      "original_filename": "WhatsApp Image 2026-10-15 at 4.45.01 PM (1).jpeg",
+      "original_sha256": "b5faf7fe204f7c420659bad39ff60c0661daab5249343e963c7694d3a529044f",
+      "output_sha256": "6458cf508585fd08f4c750a4cdb3810a5723c59c937ee39aa2491308fe3c6e35",
+      "dimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 271234,
+      "preparation": "AI-assisted photographic enhancement using image_gen, visually reviewed; resized and encoded as JPEG",
+      "original_visible_wording": [
+        "Dream Big — existing decorative neon wording preserved."
+      ],
+      "usage_note": "Supplied design-reference photograph, not verification of Shahbaz authorship, stock, material species, prices or a completed customer project. Confirm fine details from the original reference before fabrication."
+    }
+  ],
+  "unique_photographs": 40,
+  "enhanced_photographs": 35,
+  "originals_retained_for_detail_fidelity": [
+    2,
+    6,
+    10,
+    12,
+    14
+  ],
+  "fonts": [
+    {
+      "files": [
+        "assets/dm-sans-regular.woff2",
+        "assets/dm-sans-medium.woff2"
+      ],
+      "family": "DM Sans",
+      "source": "https://www.npmjs.com/package/@fontsource/dm-sans",
+      "licence": "SIL Open Font License 1.1",
+      "licence_file": "assets/dm-sans-LICENSE.txt",
+      "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
+    },
+    {
+      "files": [
+        "assets/cormorant-regular.woff2",
+        "assets/cormorant-italic.woff2"
+      ],
+      "family": "Cormorant Garamond",
+      "source": "https://www.npmjs.com/package/@fontsource/cormorant-garamond",
+      "licence": "SIL Open Font License 1.1",
+      "licence_file": "assets/cormorant-garamond-LICENSE.txt",
+      "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
+    },
+    {
+      "files": [
+        "assets/fonts/noto-nastaliq-urdu-arabic-400-normal.woff2",
+        "assets/fonts/noto-nastaliq-urdu-arabic-600-normal.woff2"
+      ],
+      "family": "Noto Nastaliq Urdu",
+      "source": "https://www.npmjs.com/package/@fontsource/noto-nastaliq-urdu",
+      "package_version": "5.3.0",
+      "licence": "SIL Open Font License 1.1",
+      "licence_file": "assets/fonts/noto-nastaliq-urdu-OFL.txt",
+      "integrity_note": "Downloaded package tarball matched registry SHA-512 integrity."
+    }
+  ]
+}

@@ -7,21 +7,33 @@ Requires Playwright and Chromium. Start a static server, then run:
 import argparse
 import json
 import re
+from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from playwright.sync_api import expect, sync_playwright
 
 
-DESIGNS = [
-    ('chiniot-bed', 'bedroom', 'Chiniot Carved Bed', 'چنیوٹی نقش دار بیڈ'),
-    ('carved-dining', 'dining', 'Carved Dining Set', 'نقش دار ڈائننگ سیٹ'),
-    ('baithak-seating', 'living', 'Traditional Baithak Seating', 'روایتی بیٹھک سیٹ'),
-    ('wooden-charpai', 'living', 'Wooden Charpai', 'لکڑی کی چارپائی'),
-    ('sheesham-wardrobe', 'storage', 'Traditional Wooden Wardrobe', 'لکڑی کی روایتی الماری'),
-    ('entrance-door', 'doors', 'Carved Entrance Door', 'نقش دار داخلی دروازہ'),
-    ('office-table', 'office', 'Wooden Office Table', 'لکڑی کی دفتری میز'),
-    ('carved-console', 'storage', 'Carved Console Table', 'نقش دار کنسول میز'),
+ROOT = Path(__file__).resolve().parents[1]
+CATALOGUE_SOURCE = (ROOT / 'catalogue.js').read_text()
+DESIGNS = json.loads(CATALOGUE_SOURCE.split('=', 1)[1].strip().rstrip(';'))
+EXPECTED_IDS = [
+    'black-quilted-bed', 'marble-finish-wardrobe', 'grey-bedroom-set',
+    'illuminated-wardrobe', 'grey-gold-carved-bed', 'cream-sectional',
+    'burgundy-gold-sofa', 'grey-upholstered-chair', 'glass-front-cabinet',
+    'classic-carved-bed', 'double-entrance-door', 'solene-cane-sofa',
+    'island-kitchen', 'upholstered-bedroom-suite', 'geometric-mesh-door',
+    'mustard-sectional', 'black-gold-carved-bed', 'floral-panel-bed',
+    'gloss-kitchen-installation', 'tall-fitted-cupboard', 'highback-rocking-chair',
+    'gold-accent-chairs', 'fitted-storage-installation', 'carved-dressing-table',
+    'teal-sectional', 'woodgrain-kitchen-installation', 'timber-frame-armchair',
+    'wooden-screen-door', 'jali-panel-door', 'fluted-media-wall',
+    'fitted-display-wall', 'carved-wood-panels', 'taupe-fitted-kitchen',
+    'dream-big-bedroom',
 ]
+CATEGORY_COUNTS = {'bedroom': 9, 'living': 9, 'storage': 7, 'doors': 4, 'kitchen': 4, 'custom': 1}
+EXPECTED_PHOTOS = {f'assets/real/photo-{n:02}.jpg' for n in range(1, 43) if n not in [13, 29]}
+assert len(DESIGNS) == 34 and [design['id'] for design in DESIGNS] == EXPECTED_IDS
+assert {image for design in DESIGNS for image in design['images']} == EXPECTED_PHOTOS
 ARABIC = re.compile(r'[\u0600-\u06ff]')
 
 
@@ -64,7 +76,7 @@ def run(url, chromium):
         expect(page.locator('html')).to_have_attribute('lang', 'en')
         expect(page.locator('html')).to_have_attribute('dir', 'ltr')
         expect(page.locator('#language-toggle')).to_have_count(0)
-        expect(page.locator('.design-card')).to_have_count(8)
+        expect(page.locator('.design-card')).to_have_count(12)
         fonts = page.evaluate('''async()=>{
             const declared=[...document.fonts];
             const groups=await Promise.all(declared.map(face=>{
@@ -79,49 +91,111 @@ def run(url, chromium):
         for card in page.locator('.design-card').all():
             assert_pair(card.locator('.design-title'))
             assert_pair(card.locator('.design-meta small'))
-        passed('simultaneous English/Urdu cards and local fonts; no language toggle')
+        assert page.evaluate('SF_CATALOGUE.length') == 34
+        assert page.evaluate('SF_CATALOGUE.map(product=>product.id)') == EXPECTED_IDS
+        expect(page.locator('#catalogue-shown .bi-en')).to_have_text('Showing 12 of 34 designs')
+        expect(page.locator('#catalogue-more')).to_be_visible()
+        assert page.locator('.team-symbol').count() == 3
+        expect(page.locator('#team img')).to_have_count(0)
+        passed('34 supplied-photo designs, simultaneous bilingual labels/fonts and icon-based team roles')
 
-        for category, count in [('bedroom',1),('dining',1),('living',2),('storage',2),('doors',1),('office',1),('all',8)]:
+        def expand_all():
+            while page.locator('#catalogue-more').is_visible():
+                previous=page.locator('.design-card').count()
+                page.locator('#catalogue-more').click()
+                expect(page.locator('.design-photo-button').nth(previous)).to_be_focused()
+
+        page.locator('#catalogue-more').click()
+        expect(page.locator('.design-card')).to_have_count(24)
+        expect(page.locator('.design-photo-button').nth(12)).to_be_focused()
+        expect(page.locator('#catalogue-shown .bi-en')).to_have_text('Showing 24 of 34 designs')
+        page.locator('#catalogue-more').click()
+        expect(page.locator('.design-card')).to_have_count(34)
+        expect(page.locator('.design-photo-button').nth(24)).to_be_focused()
+        expect(page.locator('#catalogue-more')).not_to_be_visible()
+        for category, count in [*CATEGORY_COUNTS.items(), ('all',34)]:
             button=page.locator(f'button[data-category="{category}"]')
             button.click()
-            expect(page.locator('.design-card')).to_have_count(count)
+            expect(page.locator('.design-card')).to_have_count(min(count,12))
             expect(button).to_have_attribute('aria-pressed','true')
             assert_pair(page.locator('#design-count'))
             expect(page.locator('#design-count .bi-en')).to_have_text(f'{count} {"design" if count==1 else "designs"}')
+            expect(page.locator('#catalogue-shown .bi-en')).to_have_text(f'Showing {min(count,12)} of {count} designs')
         search=page.locator('#design-search')
-        for query,count in [('charpai',1),('الماری',2),('door',1),('no-match-design-6472',0)]:
+        for query,count in [('Teal Sofa & Ottoman',1),('کوئلٹڈ',1),('rocking',1),('no-match-design-6472',0)]:
             search.fill(query)
             expect(page.locator('.design-card')).to_have_count(count)
             assert page.locator('#design-empty').is_visible()==(count==0)
+            expect(page.locator('#catalogue-more')).not_to_be_visible()
         search.fill('')
         page.locator('#design-sort').select_option('az')
+        expect(page.locator('.design-card')).to_have_count(12)
+        expand_all()
         names=page.locator('.design-title .bi-en').all_text_contents()
         assert names==sorted(names,key=str.casefold)
         page.locator('#design-sort').select_option('featured')
-        for category,count in [('living',2),('bedroom',1),('dining',1)]:
+        expect(page.locator('.design-card')).to_have_count(12)
+        for category in ['bedroom','doors','kitchen']:
             link=page.locator(f'[data-shop-category="{category}"]').first
             assert link.count(), f'Missing editorial link for {category}'
             search.fill('no-match-design-6472')
             link.click()
             expect(search).to_have_value('')
             expect(page.locator(f'button[data-category="{category}"]')).to_have_attribute('aria-pressed','true')
-            expect(page.locator('.design-card')).to_have_count(count)
+            expect(page.locator('.design-card')).to_have_count(CATEGORY_COUNTS[category])
         page.locator('button[data-category="all"]').click()
-        passed('room filters, English/Urdu search, sorting and editorial category links')
+        expand_all()
+        assert page.locator('.design-photo-button').evaluate_all('buttons=>buttons.map(button=>button.dataset.id)')==EXPECTED_IDS
+        passed('12/24/34 pagination with focus/reset, six filters, English/Urdu search, sorting and room links')
 
         detail,quote,saved=page.locator('#design-dialog'),page.locator('#quote-dialog'),page.locator('#saved-dialog')
-        for index,(design_id,category,english,urdu) in enumerate(DESIGNS):
+        decoded_photos, decoded_thumbs=set(), set()
+        for design in DESIGNS:
+            design_id,category=design['id'],design['category']
+            english,urdu=design['title']['en'],design['title']['ur']
             opener=page.locator(f'.design-photo-button[data-id="{design_id}"]')
+            expected_thumb=design['defaultImage'].replace('assets/real/','assets/real/thumbs/')
+            assert opener.locator('img').get_attribute('src').split('?',1)[0]==expected_thumb
             opener.click()
             expect(detail).to_be_visible()
             expect(page.locator('#detail-title .bi-en')).to_have_text(english)
             expect(page.locator('#detail-title .bi-ur')).to_have_text(urdu)
             assert_pair(page.locator('#detail-description'))
+            expect(page.locator('#detail-description .bi-en')).to_have_text(design['description']['en'])
+            expect(page.locator('#detail-description .bi-ur')).to_have_text(design['description']['ur'])
             expect(page.locator('#detail-specs li')).to_have_count(3)
             for item in page.locator('#detail-specs li').all():
                 assert_pair(item)
-            page.locator('#detail-image').evaluate('image=>image.decode()')
-            assert page.locator('#detail-image').get_attribute('src').split('?', 1)[0].endswith(f'design-{index+1}.jpg')
+            thumbnails=page.locator('#detail-thumbnails button')
+            expect(thumbnails).to_have_count(len(design['images']))
+            assert page.locator('#detail-thumbnails').is_visible()==(len(design['images'])>1)
+            for photo_index,photo in enumerate(design['images']):
+                if len(design['images'])>1:
+                    thumbnails.nth(photo_index).click()
+                image=page.locator('#detail-image')
+                image.evaluate('image=>image.decode()')
+                assert image.get_attribute('src').split('?',1)[0]==photo
+                assert 'Generated' not in image.get_attribute('alt') and 'تصوراتی' not in image.get_attribute('alt')
+                assert page.locator('#detail-fullsize').get_attribute('href').split('?',1)[0]==photo
+                expect(page.locator('#detail-photo-count .bi-en')).to_have_text(f'{photo_index+1} / {len(design["images"])} photos')
+                expect(thumbnails.nth(photo_index)).to_have_attribute('aria-pressed','true')
+                thumb=thumbnails.nth(photo_index).locator('img')
+                expected_thumb=photo.replace('assets/real/','assets/real/thumbs/')
+                assert thumb.get_attribute('src').split('?',1)[0]==expected_thumb
+                thumb.evaluate('async image=>{image.loading="eager";await image.decode();}')
+                decoded_thumbs.add(expected_thumb)
+                decoded_photos.add(photo)
+            if len(design['images'])>1:
+                thumbnails.last.focus()
+                thumbnails.last.press('Home')
+                expect(thumbnails.first).to_be_focused()
+                expect(thumbnails.first).to_have_attribute('aria-pressed','true')
+                thumbnails.first.press('ArrowLeft')
+                expect(thumbnails.last).to_be_focused()
+                thumbnails.last.press('ArrowRight')
+                expect(thumbnails.first).to_be_focused()
+                thumbnails.first.press('End')
+                expect(thumbnails.last).to_be_focused()
             page.keyboard.press('Escape')
             expect(opener).to_be_focused()
             title=page.locator(f'.design-title .product-open[data-id="{design_id}"]')
@@ -138,7 +212,9 @@ def run(url, chromium):
             expect(page.locator('#quote-name')).to_be_focused()
             page.keyboard.press('Escape')
             expect(title).to_be_focused()
-        passed('eight photo/title/detail/inquiry paths with both languages and focus return')
+        assert decoded_photos==EXPECTED_PHOTOS
+        assert decoded_thumbs=={photo.replace('assets/real/','assets/real/thumbs/') for photo in EXPECTED_PHOTOS}
+        passed('all 34 bilingual detail/inquiry paths, all 40 supplied master photos/40 optimized thumbnails, thumbnail controls/fullsize links and focus return')
 
         page.locator('.design-photo-button').first.click()
         page.locator('#detail-save').click()
@@ -146,7 +222,7 @@ def run(url, chromium):
         assert_pair(page.locator('#detail-save'))
         page.locator('#detail-save').click()
         page.keyboard.press('Escape')
-        for design_id in ['chiniot-bed','carved-dining']:
+        for design_id in ['black-quilted-bed','marble-finish-wardrobe']:
             button=page.locator(f'.save-design[data-id="{design_id}"]')
             button.click()
             expect(button).to_be_focused()
@@ -154,11 +230,14 @@ def run(url, chromium):
         assert_pair(page.locator('#toast'))
         page.reload(wait_until='networkidle')
         expect(page.locator('.save-design[aria-pressed="true"]')).to_have_count(2)
-        assert json.loads(page.evaluate('localStorage.getItem("sf-test4-shortlist")'))==['chiniot-bed','carved-dining']
+        assert json.loads(page.evaluate('localStorage.getItem("sf-test4-shortlist")'))==['black-quilted-bed','marble-finish-wardrobe']
         saved_opener=page.locator('.saved-open').first
         saved_opener.click()
         expect(page.locator('.saved-item')).to_have_count(2)
         assert_pair(page.locator('.saved-copy h3').first)
+        for image in page.locator('.saved-item img').all():
+            assert '/assets/real/thumbs/' in image.evaluate('image=>image.src')
+            image.evaluate('image=>image.decode()')
         page.locator('.saved-item .product-open').first.click()
         expect(detail).to_be_visible()
         page.keyboard.press('Escape')
@@ -166,7 +245,7 @@ def run(url, chromium):
         saved_opener.click()
         page.locator('#saved-inquire').click()
         assert_pair(page.locator('#quote-selection'))
-        expect(page.locator('#quote-selection .bi-en')).to_contain_text('Chiniot Carved Bed')
+        expect(page.locator('#quote-selection .bi-en')).to_contain_text('Black Quilted Bed')
         page.keyboard.press('Escape')
         saved_opener.click()
         page.locator('.saved-remove').first.click()
@@ -234,7 +313,7 @@ def run(url, chromium):
         expect(summary).to_contain_text(name)
         expect(summary).to_contain_text(message)
         expect(summary.locator('img,script')).to_have_count(0)
-        for expected in ['PROJECT INQUIRY','کام کی تفصیل','Chiniot Carved Bed','چنیوٹی نقش دار بیڈ','Ash','ایش','250','۲۵۰']:
+        for expected in ['PROJECT INQUIRY','کام کی تفصیل','Black Quilted Bed','سیاہ کوئلٹڈ بیڈ','Ash','ایش','250','۲۵۰']:
             expect(summary).to_contain_text(expected)
         assert_pair(page.locator('#quote-status'))
         link=page.locator('#quote-wa')
@@ -316,7 +395,9 @@ def run(url, chromium):
             image.scroll_into_view_if_needed()
             image.evaluate('image=>image.decode()')
         assert not page.locator('img').evaluate_all('images=>images.filter(image=>!image.complete||!image.naturalWidth).map(image=>image.src)')
-        passed('all furniture, hero, gallery and staff photos decode')
+        for image in page.locator('main img').all():
+            assert '/assets/real/' in image.evaluate('image=>image.src'), image.get_attribute('src')
+        passed('all furniture/hero/room/gallery photos decode and every displayed photo uses assets/real')
 
         for width in [320,360,390,414,600,700,768,1024,1440]:
             page.set_viewport_size({'width':width,'height':1000})
@@ -325,7 +406,10 @@ def run(url, chromium):
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
             hero=page.locator('#hero-title')
             assert hero.evaluate('element=>element.scrollWidth<=element.clientWidth+1'),width
-            page.locator('.design-photo-button').first.click()
+            assert page.locator('#site-header .brand').evaluate('element=>{const b=element.getBoundingClientRect();return b.left>=0&&b.right<=innerWidth+1&&element.scrollWidth<=element.clientWidth+1;}'),width
+            if width<=700:
+                assert page.locator('#site-header .brand').evaluate('element=>element.getBoundingClientRect().right<=document.getElementById("menu-toggle").getBoundingClientRect().left+1'),width
+            page.locator('.design-photo-button[data-id="grey-bedroom-set"]').click()
             settle(page)
             box=detail.evaluate('element=>({scroll:element.scrollWidth,width:element.clientWidth,left:element.getBoundingClientRect().left,right:element.getBoundingClientRect().right})')
             assert box['scroll']<=box['width']+1 and box['left']>=0 and box['right']<=width+1,(width,box)
@@ -366,7 +450,7 @@ def run(url, chromium):
         blocked_errors=[]
         blocked.on('pageerror',lambda error:blocked_errors.append(str(error)))
         blocked.goto(url,wait_until='networkidle')
-        expect(blocked.locator('.design-card')).to_have_count(8)
+        expect(blocked.locator('.design-card')).to_have_count(12)
         blocked.locator('.save-design').first.click()
         expect(blocked.locator('.save-design').first).to_have_attribute('aria-pressed','true')
         assert_pair(blocked.locator('#toast'))

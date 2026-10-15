@@ -24,8 +24,8 @@
       toastSaved: 'Design saved to your shortlist.', toastRemoved: 'Design removed from your shortlist.', toastCleared: 'Your shortlist is clear.',
       selected: 'Selected designs', noSelection: 'No catalogue designs selected. Tell us about your project below.', studioBrief: 'Your design direction',
       width: 'cm wide', materialNote: 'Final wood, finish, dimensions and availability are agreed with your quotation.',
-      styleConcept: 'Generated design concept for inspiration; final specifications are agreed for your order.',
-      galleryShow: 'Show design inspiration', galleryCaption: 'Generated design concept. Materials, dimensions and final details are confirmed before an order.',
+      styleConcept: 'Professionally edited supplied design photograph; final specifications are agreed before your order.',
+      galleryShow: 'Show design inspiration', galleryCaption: 'Explore this design and include it in your inquiry. Materials, size, price and availability are confirmed before an order.',
       inquiryHeading: 'PROJECT INQUIRY', name: 'Name', phone: 'Phone', city: 'City', project: 'Project', details: 'Project details', notSpecified: 'Not specified',
       orderNote: 'Please discuss final measurements, materials, finish, price, production time and delivery with me before confirming an order.',
       inquiryReady: 'Your inquiry is ready. Review it, then choose WhatsApp to share. Nothing has been sent yet.',
@@ -47,8 +47,8 @@
       toastSaved: 'ڈیزائن پسندیدہ فہرست میں محفوظ ہو گیا۔', toastRemoved: 'ڈیزائن پسندیدہ فہرست سے ہٹا دیا گیا۔', toastCleared: 'پسندیدہ فہرست خالی کر دی گئی۔',
       selected: 'منتخب ڈیزائن', noSelection: 'ابھی کوئی ڈیزائن منتخب نہیں کیا گیا۔ اپنے کام کی تفصیل نیچے لکھیں۔', studioBrief: 'آپ کی پسند کی تفصیل',
       width: 'سینٹی میٹر چوڑائی', materialNote: 'حتمی لکڑی، پالش، پیمائش اور دستیابی کوٹیشن کے ساتھ طے ہوں گی۔',
-      styleConcept: 'یہ ڈیزائن کی تصوراتی تصویر ہے؛ حتمی تفصیلات آپ کے آرڈر کے لیے باہمی مشاورت سے طے ہوں گی۔',
-      galleryShow: 'ڈیزائن کی تصویر دیکھیں', galleryCaption: 'ڈیزائن کی تصوراتی تصویر۔ لکڑی، پیمائش اور حتمی تفصیلات آرڈر سے پہلے طے ہوں گی۔',
+      styleConcept: 'فراہم کردہ ڈیزائن کی بہتر بنائی گئی تصویر؛ آرڈر کی حتمی تفصیلات باہمی مشاورت سے طے ہوں گی۔',
+      galleryShow: 'ڈیزائن کی تصویر دیکھیں', galleryCaption: 'تصویری مجموعے سے اپنی پسند منتخب کریں۔ لکڑی، ناپ، قیمت اور دستیابی آرڈر سے پہلے طے کریں۔',
       inquiryHeading: 'کام کی تفصیل', name: 'نام', phone: 'فون', city: 'شہر', project: 'کام کی نوعیت', details: 'آپ کے کام کی تفصیل', notSpecified: 'درج نہیں کیا گیا',
       orderNote: 'آرڈر کی تصدیق سے پہلے حتمی پیمائش، لکڑی، پالش، قیمت، تیاری کا وقت اور ترسیل کی تفصیلات باہمی مشاورت سے طے کریں۔',
       inquiryReady: 'آپ کے کام کی تفصیل تیار ہے۔ اسے دیکھ کر واٹس ایپ پر شیئر کرنے کا انتخاب کریں۔ ابھی کچھ بھی نہیں بھیجا گیا۔',
@@ -75,76 +75,22 @@
 
   const categories = {
     living: { en: 'Living & baithak', ur: 'بیٹھک' }, dining: { en: 'Dining', ur: 'ڈائننگ' }, bedroom: { en: 'Bedroom', ur: 'بیڈروم' },
-    storage: { en: 'Storage & wardrobes', ur: 'الماریاں اور شیلف' }, doors: { en: 'Doors', ur: 'دروازے' }, office: { en: 'Office', ur: 'دفتر' }, custom: { en: 'A custom project', ur: 'حسبِ فرمائش کام' },
+    storage: { en: 'Storage & wardrobes', ur: 'الماریاں اور شیلف' }, doors: { en: 'Doors', ur: 'دروازے' }, kitchen: { en: 'Kitchens', ur: 'کچن' }, office: { en: 'Office', ur: 'دفتر' }, custom: { en: 'A custom project', ur: 'حسبِ فرمائش کام' },
   };
   const woods = { sheesham: { en: 'Sheesham', ur: 'شیشم' }, deodar: { en: 'Deodar', ur: 'دیودار' }, ash: { en: 'Ash', ur: 'ایش' } };
   const finishes = { natural: { en: 'Natural finish', ur: 'قدرتی رنگ' }, walnut: { en: 'Walnut tone', ur: 'اخروٹی پالش' }, dark: { en: 'Dark finish', ur: 'گہری پالش' } };
-  const products = [
-    {
-      id: 'chiniot-bed', category: 'bedroom', defaultImage: 'assets/design-1.jpg',
-      title: { en: 'Chiniot Carved Bed', ur: 'چنیوٹی نقش دار بیڈ' },
-      description: { en: 'A bed direction inspired by the carved forms associated with Chinioti furniture. Discuss the headboard, timber, finish and mattress dimensions to plan a piece for your bedroom.', ur: 'چنیوٹی فرنیچر کی نقش و نگاری سے متاثر بیڈ کا ایک انداز۔ اپنے بیڈروم کے لیے سرہانے، لکڑی، پالش اور گدے کی پیمائش پر بات کر کے تفصیلات طے کریں۔' },
-      specs: { en: ['Headboard carving and proportions to discuss', 'Frame sized around your mattress', 'Wood, finish and bedside options by agreement'], ur: ['سرہانے کی نقش و نگاری اور تناسب آپ کی پسند سے', 'گدے کی پیمائش کے مطابق بیڈ کا سائز', 'لکڑی، پالش اور سائیڈ میز کی تفصیلات باہمی مشاورت سے'] },
-      tags: 'chiniot chinioti bed palang carved bedroom چنیوٹ پلنگ نقش بیڈ',
-    },
-    {
-      id: 'carved-dining', category: 'dining', defaultImage: 'assets/design-2.jpg',
-      title: { en: 'Carved Dining Set', ur: 'نقش دار ڈائننگ سیٹ' },
-      description: { en: 'A traditional dining direction for family meals and special gatherings. Choose a table size, seating count and carved details that work with your dining space.', ur: 'گھر کے کھانوں اور خاص دعوتوں کے لیے روایتی ڈائننگ کا انداز۔ اپنی جگہ کے مطابق میز کی پیمائش، کرسیوں کی تعداد اور نقش و نگاری منتخب کریں۔' },
-      specs: { en: ['Table size and seating count to your brief', 'Carving and chair-back details to discuss', 'Timber, upholstery and polish options'], ur: ['آپ کی ضرورت کے مطابق میز اور نشستوں کی تعداد', 'نقش و نگاری اور کرسی کی پشت کا انداز', 'لکڑی، نشست کے کپڑے اور پالش کے انتخاب'] },
-      tags: 'dining table chairs family carved dinner mez kursi ڈائننگ میز کرسیاں دعوت',
-    },
-    {
-      id: 'baithak-seating', category: 'living', defaultImage: 'assets/design-3.jpg',
-      title: { en: 'Traditional Baithak Seating', ur: 'روایتی بیٹھک سیٹ' },
-      description: { en: 'Make room for chai, guests and a good mehfil. Explore wooden seating and companion tables in a traditional direction, with upholstery and proportions suited to your baithak.', ur: 'چائے، مہمانوں اور اچھی محفل کے لیے جگہ بنائیں۔ اپنی بیٹھک کے مطابق روایتی لکڑی کی نشستیں، میزیں، کپڑا اور سائز منتخب کرنے پر بات کریں۔' },
-      specs: { en: ['Seating arrangement planned around your room', 'Wood detailing and upholstery options', 'Companion tables can be discussed'], ur: ['کمرے کے مطابق نشستوں کی ترتیب', 'لکڑی کی بناوٹ اور نشست کے کپڑے کا انتخاب', 'ساتھ کی میزوں کا انداز بھی طے کیا جا سکتا ہے'] },
-      tags: 'baithak sofa seating lounge mehfil chai diwan بیٹھک صوفہ دیوان محفل نشست',
-    },
-    {
-      id: 'wooden-charpai', category: 'living', defaultImage: 'assets/design-4.jpg',
-      title: { en: 'Wooden Charpai', ur: 'لکڑی کی چارپائی' },
-      description: { en: 'A familiar Pakistani form with room for your own details. Discuss the frame, leg design, weaving and intended setting before choosing suitable materials and a finish.', ur: 'پاکستانی گھروں کی جانی پہچانی چارپائی، آپ کی پسند کی تفصیلات کے ساتھ۔ لکڑی، پائیوں، بنائی اور استعمال کی جگہ کے مطابق موزوں مواد اور پالش پر بات کریں۔' },
-      specs: { en: ['Frame dimensions to your requirements', 'Leg shape and weaving style to discuss', 'Material and finish chosen for the intended setting'], ur: ['آپ کی ضرورت کے مطابق لمبائی اور چوڑائی', 'پائیوں اور بنائی کا انداز آپ کی پسند سے', 'استعمال کی جگہ کے لیے موزوں لکڑی اور پالش'] },
-      tags: 'charpai manji khaat woven traditional aangan چارپائی کھاٹ منجی آنگن',
-    },
-    {
-      id: 'sheesham-wardrobe', category: 'storage', defaultImage: 'assets/design-5.jpg',
-      title: { en: 'Traditional Wooden Wardrobe', ur: 'لکڑی کی روایتی الماری' },
-      description: { en: 'A wardrobe direction with traditional character and storage planned for daily life. Sheesham is one material preference to discuss; final timber and construction depend on the agreed specification.', ur: 'روایتی انداز کی الماری جس کی اندرونی ترتیب روزمرہ کی ضرورت کے مطابق طے ہو۔ شیشم ایک تجویز کردہ لکڑی ہے؛ حتمی لکڑی اور بناوٹ باہمی مشاورت سے منتخب ہوں گی۔' },
-      specs: { en: ['Hanging, shelves and drawers to your brief', 'Door details and hardware to discuss', 'Suggested timber: sheesham, subject to confirmation'], ur: ['ضرورت کے مطابق کپڑے لٹکانے کی جگہ، شیلف اور دراز', 'دروازوں کی بناوٹ اور ہینڈل کا انتخاب', 'تجویز کردہ لکڑی: شیشم، حتمی تصدیق کے بعد'] },
-      tags: 'wardrobe almirah storage cupboard sheesham cabinet الماری شیشم کپڑے دراز',
-    },
-    {
-      id: 'entrance-door', category: 'doors', defaultImage: 'assets/design-6.jpg',
-      title: { en: 'Carved Entrance Door', ur: 'نقش دار داخلی دروازہ' },
-      description: { en: 'A considered welcome at the dehleez of your home. Explore panel proportions and carved details for an entrance door, with site dimensions, exposure and hardware discussed before making.', ur: 'گھر کی دہلیز پر ایک خوبصورت استقبال۔ داخلی دروازے کی نقش و نگاری اور پینل کا تناسب منتخب کریں؛ تیاری سے پہلے موقع کی پیمائش، موسم کے اثرات اور ہارڈویئر پر بات ضروری ہے۔' },
-      specs: { en: ['Opening measurements confirmed for your site', 'Panel and carving details to your brief', 'Timber, hardware and exposure requirements to discuss'], ur: ['موقع پر دروازے کی پیمائش کی تصدیق', 'آپ کی پسند کے پینل اور نقش و نگاری', 'لکڑی، ہارڈویئر اور موسم کے اثرات کے مطابق تفصیلات'] },
-      tags: 'door entrance darwaza dehleez carved panel دروازہ دہلیز داخلی نقش',
-    },
-    {
-      id: 'office-table', category: 'office', defaultImage: 'assets/design-7.jpg',
-      title: { en: 'Wooden Office Table', ur: 'لکڑی کی دفتری میز' },
-      description: { en: 'A work surface with the warmth of wood and space for your routine. Discuss a desk with the dimensions, drawers and detailing suited to your office or study.', ur: 'لکڑی کی خوبصورتی کے ساتھ کام کرنے کے لیے موزوں میز۔ اپنے دفتر یا مطالعے کی جگہ کے مطابق پیمائش، درازوں اور بناوٹ کی تفصیلات طے کریں۔' },
-      specs: { en: ['Width and depth planned around your workspace', 'Drawer and storage options to discuss', 'Timber tone, finish and details to your brief'], ur: ['کام کی جگہ کے مطابق لمبائی اور گہرائی', 'ضرورت کے مطابق دراز اور سامان رکھنے کی جگہ', 'آپ کی پسند کی لکڑی، پالش اور بناوٹ'] },
-      tags: 'office desk table study work daftar mez دفتر میز مطالعہ کام',
-    },
-    {
-      id: 'carved-console', category: 'storage', defaultImage: 'assets/design-8.jpg',
-      title: { en: 'Carved Console Table', ur: 'نقش دار کنسول میز' },
-      description: { en: 'A decorative and practical direction for a hallway, entrance or sitting room. Plan the console depth, carved details and any storage around the way you use the space.', ur: 'راہداری، داخلی حصے یا بیٹھک کے لیے خوبصورت اور کارآمد کنسول میز۔ اپنی جگہ اور استعمال کے مطابق گہرائی، نقش و نگاری اور سامان رکھنے کی سہولت طے کریں۔' },
-      specs: { en: ['Dimensions planned for your room or hallway', 'Carved details and legs to discuss', 'Shelf or drawer options by agreement'], ur: ['کمرے یا راہداری کے مطابق پیمائش', 'نقش و نگاری اور پائیوں کا انداز', 'باہمی مشاورت سے شیلف یا دراز کا انتخاب'] },
-      tags: 'console hallway entry table storage carved sideboard کنسول میز راہداری دراز',
-    },
-  ];
-
+  const products = Array.isArray(window.SF_CATALOGUE) ? window.SF_CATALOGUE : [];
   const productMap = new Map(products.map((product) => [product.id, product]));
   const imageFor = (product) => config.designImages?.[product.id] || product.defaultImage;
-  const imageAlt = (product) => `${product.title.en} / ${product.title.ur} — Generated design concept / تصوراتی ڈیزائن`;
+  const photoThumb = (src) => src.replace('assets/real/photo-', 'assets/real/thumbs/photo-');
+  const imageAlt = (product) => `${product.title.en} / ${product.title.ur} — Edited supplied design photograph / فراہم کردہ ڈیزائن کی تصویر`;
   const validIds = (value) => Array.isArray(value) ? [...new Set(value.filter((id) => typeof id === 'string' && productMap.has(id)))] : [];
   let savedIds = [];
   try { savedIds = validIds(JSON.parse(window.localStorage.getItem(shortlistKey) || '[]')); } catch { /* A current-visit shortlist remains available without storage. */ }
   let activeCategory = 'all';
+  const pageSize = 12;
+  let visibleLimit = pageSize;
+  let detailPhotoIndex = 0;
   let selectedDesign = null;
   let quoteDesignIds = [];
   let quoteStudio = null;
@@ -211,14 +157,16 @@
     const visible = products.filter((product) => (activeCategory === 'all' || product.category === activeCategory)
       && (!search || normalize(`${product.title.en} ${product.title.ur} ${product.description.en} ${product.description.ur} ${product.tags} ${categories[product.category].en} ${categories[product.category].ur}`).includes(search)));
     if (sort === 'az') visible.sort((a, b) => a.title.en.localeCompare(b.title.en, 'en-PK'));
-    if ($('design-grid')) $('design-grid').innerHTML = visible.map((product) => `
+    if ($('design-grid')) $('design-grid').innerHTML = visible.slice(0, visibleLimit).map((product) => `
       <article class="design-card">
-        <div class="design-photo"><button type="button" class="design-photo-button product-open" data-id="${product.id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur} — ڈیزائن دیکھیں`)}"><img src="${escapeHTML(imageFor(product))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" decoding="async" width="900" height="1100"><span class="design-photo-action">${textPair('view')}${arrow}</span></button><button type="button" class="save-design${savedIds.includes(product.id) ? ' is-saved' : ''}" data-id="${product.id}" aria-pressed="${savedIds.includes(product.id)}" aria-label="${escapeHTML(`${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'en')}: ${product.title.en} / ${product.title.ur} — ${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'ur')}`)}">${heart}</button></div>
+        <div class="design-photo"><button type="button" class="design-photo-button product-open" data-id="${product.id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur} — ڈیزائن دیکھیں`)}"><img src="${escapeHTML(photoThumb(imageFor(product)))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" decoding="async" width="900" height="1100"><span class="design-photo-action">${textPair('view')}${arrow}</span></button><button type="button" class="save-design${savedIds.includes(product.id) ? ' is-saved' : ''}" data-id="${product.id}" aria-pressed="${savedIds.includes(product.id)}" aria-label="${escapeHTML(`${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'en')}: ${product.title.en} / ${product.title.ur} — ${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'ur')}`)}">${heart}</button></div>
         <div class="design-info"><div class="design-meta"><small>${bi(categories[product.category].en, categories[product.category].ur)}</small><span>${textPair('made')}</span></div><h3 class="design-title"><button type="button" class="product-open" data-id="${product.id}">${bi(product.title.en, product.title.ur)}</button></h3><button type="button" class="design-more product-open" data-id="${product.id}">${textPair('view')}${arrow}</button></div>
       </article>
     `).join('');
     setBi('design-count', `${visible.length} ${text(visible.length === 1 ? 'design' : 'designs', 'en')}`, `${localizedNumber(visible.length)} ڈیزائن`);
     if ($('design-empty')) $('design-empty').hidden = visible.length > 0;
+    if ($('catalogue-more')) $('catalogue-more').hidden = visibleLimit >= visible.length;
+    setBi('catalogue-shown', `Showing ${Math.min(visibleLimit, visible.length)} of ${visible.length} designs`, `${localizedNumber(visible.length)} میں سے ${localizedNumber(Math.min(visibleLimit, visible.length))} ڈیزائن`);
     document.querySelectorAll('button[data-category]').forEach((button) => {
       const active = button.dataset.category === activeCategory;
       button.classList.toggle('active', active);
@@ -230,7 +178,7 @@
     setBi('detail-title', selectedDesign.title.en, selectedDesign.title.ur);
     setBi('detail-category', categories[selectedDesign.category].en, categories[selectedDesign.category].ur);
     setBi('detail-description', selectedDesign.description.en, selectedDesign.description.ur);
-    if ($('detail-image')) { $('detail-image').src = imageFor(selectedDesign); $('detail-image').alt = imageAlt(selectedDesign); }
+    renderDetailPhoto(true);
     if ($('detail-specs')) $('detail-specs').innerHTML = selectedDesign.specs.en.map((specification, index) => `<li>${bi(specification, selectedDesign.specs.ur[index])}</li>`).join('');
     if ($('detail-save')) {
       const saved = savedIds.includes(selectedDesign.id);
@@ -239,17 +187,33 @@
       $('detail-save').innerHTML = textPair(saved ? 'saved' : 'save');
     }
   }
+  function detailImages() {
+    return selectedDesign?.images?.length ? selectedDesign.images : selectedDesign ? [imageFor(selectedDesign)] : [];
+  }
+  function renderDetailPhoto(rebuild = false) {
+    const images = detailImages();
+    if (!images.length) return;
+    detailPhotoIndex = Math.max(0, Math.min(detailPhotoIndex, images.length - 1));
+    if ($('detail-image')) { $('detail-image').src = images[detailPhotoIndex]; $('detail-image').alt = `${imageAlt(selectedDesign)} — view ${detailPhotoIndex + 1}`; }
+    if ($('detail-fullsize')) $('detail-fullsize').href = images[detailPhotoIndex];
+    setBi('detail-photo-count', `${detailPhotoIndex + 1} / ${images.length} photos`, `${localizedNumber(detailPhotoIndex + 1)} / ${localizedNumber(images.length)} تصاویر`);
+    const strip = $('detail-thumbnails');
+    if (strip && rebuild) strip.innerHTML = images.map((src, index) => `<button type="button" data-photo-index="${index}" aria-label="${escapeHTML(`View photo ${index + 1} / تصویر ${localizedNumber(index + 1)}`)}"><img src="${escapeHTML(photoThumb(src))}" alt="" width="90" height="75" loading="lazy"></button>`).join('');
+    strip?.querySelectorAll('button').forEach((button, index) => button.setAttribute('aria-pressed', String(index === detailPhotoIndex)));
+    if (strip) strip.hidden = images.length <= 1;
+  }
   function showDesign(id, source) {
     const product = productMap.get(id);
     if (!product) return;
     selectedDesign = product;
+    detailPhotoIndex = 0;
     renderDetail();
     openDialog($('design-dialog'), source);
   }
   function renderSaved() {
     if ($('saved-items')) $('saved-items').innerHTML = savedIds.length ? savedIds.map((id) => {
       const product = productMap.get(id);
-      return `<article class="saved-item"><button type="button" class="saved-image product-open" data-id="${id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur}`)}"><img src="${escapeHTML(imageFor(product))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" width="160" height="180"></button><div class="saved-copy"><small>${bi(categories[product.category].en, categories[product.category].ur)}</small><h3><button type="button" class="product-open" data-id="${id}">${bi(product.title.en, product.title.ur)}</button></h3><button type="button" class="saved-remove" data-id="${id}" aria-label="${escapeHTML(`Remove ${product.title.en} / ${product.title.ur} — فہرست سے ہٹائیں`)}">${textPair('remove')}</button></div></article>`;
+      return `<article class="saved-item"><button type="button" class="saved-image product-open" data-id="${id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur}`)}"><img src="${escapeHTML(photoThumb(imageFor(product)))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" width="160" height="180"></button><div class="saved-copy"><small>${bi(categories[product.category].en, categories[product.category].ur)}</small><h3><button type="button" class="product-open" data-id="${id}">${bi(product.title.en, product.title.ur)}</button></h3><button type="button" class="saved-remove" data-id="${id}" aria-label="${escapeHTML(`Remove ${product.title.en} / ${product.title.ur} — فہرست سے ہٹائیں`)}">${textPair('remove')}</button></div></article>`;
     }).join('') : `<div class="saved-empty"><h3>${textPair('emptySaved')}</h3><p>${textPair('emptySavedHint')}</p></div>`;
     document.querySelectorAll('[data-saved-count]').forEach((element) => { element.textContent = String(savedIds.length); });
     if ($('saved-clear')) $('saved-clear').disabled = savedIds.length === 0;
@@ -423,7 +387,7 @@
     else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); }
   });
 
-  const galleryProducts = ['chiniot-bed', 'carved-dining', 'baithak-seating', 'wooden-charpai', 'entrance-door', 'carved-console'];
+  const galleryProducts = config.galleryProductIds.filter((id) => productMap.has(id));
   let galleryIndex = 0;
   function renderGallery() {
     const product = productMap.get(galleryProducts[galleryIndex]);
@@ -480,14 +444,30 @@
     const shop = target?.closest('[data-shop-category]');
     if (shop) {
       const category = shop.dataset.shopCategory;
-      if (Object.hasOwn(categories, category)) { activeCategory = category; if ($('design-search')) $('design-search').value = ''; renderCatalogue(); closeMenu(); }
+      if (Object.hasOwn(categories, category)) { activeCategory = category; visibleLimit = pageSize; if ($('design-search')) $('design-search').value = ''; renderCatalogue(); closeMenu(); }
       return;
     }
     const filter = target?.closest('button[data-category]');
-    if (filter && (filter.dataset.category === 'all' || Object.hasOwn(categories, filter.dataset.category))) { activeCategory = filter.dataset.category; renderCatalogue(); }
+    if (filter && (filter.dataset.category === 'all' || Object.hasOwn(categories, filter.dataset.category))) { activeCategory = filter.dataset.category; visibleLimit = pageSize; renderCatalogue(); }
   });
-  $('design-search')?.addEventListener('input', renderCatalogue);
-  $('design-sort')?.addEventListener('change', renderCatalogue);
+  $('design-search')?.addEventListener('input', () => { visibleLimit = pageSize; renderCatalogue(); });
+  $('design-sort')?.addEventListener('change', () => { visibleLimit = pageSize; renderCatalogue(); });
+  $('catalogue-more')?.addEventListener('click', () => {
+    const previous = document.querySelectorAll('#design-grid .design-card').length;
+    visibleLimit += pageSize; renderCatalogue();
+    const next = document.querySelectorAll('#design-grid .design-photo-button')[previous];
+    next?.focus({ preventScroll: true }); next?.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
+  });
+  $('detail-thumbnails')?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-photo-index]');
+    if (button) { detailPhotoIndex = Number(button.dataset.photoIndex); renderDetailPhoto(); }
+  });
+  $('detail-thumbnails')?.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault(); const total = detailImages().length;
+    detailPhotoIndex = event.key === 'Home' ? 0 : event.key === 'End' ? total - 1 : (detailPhotoIndex + (event.key === 'ArrowRight' ? 1 : -1) + total) % total;
+    renderDetailPhoto(); $('detail-thumbnails')?.querySelectorAll('button')[detailPhotoIndex]?.focus();
+  });
   $('detail-save')?.addEventListener('click', () => { if (selectedDesign) toggleSaved(selectedDesign.id); });
   $('detail-inquire')?.addEventListener('click', () => { if (selectedDesign) openQuote({ productId: selectedDesign.id, source: $('detail-inquire') }); });
   $('saved-inquire')?.addEventListener('click', () => openQuote({ source: $('saved-inquire') }));
