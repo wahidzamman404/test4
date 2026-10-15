@@ -34,104 +34,6 @@
     "integrity_note": "Downloaded package tarball matched registry SHA-512 integrity."
   },
   {
-    "file": "design-1.jpg",
-    "description": "Original Pakistani Chiniot carved sheesham bedroom suite concept with an arched floral headboard, matching bedside tables and cream linen.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-62b9bd96-5dca-4b4b-92d8-348a6da16c46.png",
-    "size": {
-      "width": 1200,
-      "height": 900
-    },
-    "bytes": 247039,
-    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
-  },
-  {
-    "file": "design-2.jpg",
-    "description": "Original Pakistani carved sheesham six-seat rectangular dining set concept with cream upholstered chairs.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-b3050888-2fdb-4af0-9db3-37fb36fc5c9f.png",
-    "size": {
-      "width": 1200,
-      "height": 900
-    },
-    "bytes": 243782,
-    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
-  },
-  {
-    "file": "design-3.jpg",
-    "description": "Original Pakistani baithak concept with a carved sheesham sofa, matching armchairs, coffee table, cream upholstery and a small Ajrak-style fabric accent.",
-    "source": "original_generated",
-    "png_path": "/workspace/generated_images/exec-9cf190c4-aebb-4449-87c6-ac56f93c1ad9.png",
-    "size": {
-      "width": 1200,
-      "height": 900
-    },
-    "bytes": 246054,
-    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
-  },
-  {
-    "file": "design-4.jpg",
-    "description": "Original generated Pakistani handwoven rope charpai with carved sheesham legs in a warm aangan courtyard",
-    "source": "original generated",
-    "PNGpath": "/workspace/generated_images/exec-35d2e5d9-9e6b-4303-be99-72d31496b469.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 211501,
-    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
-  },
-  {
-    "file": "design-5.jpg",
-    "description": "Original generated traditional Pakistani three-door carved sheesham wardrobe",
-    "source": "original generated",
-    "PNGpath": "/workspace/generated_images/exec-213fe55e-4a76-48ce-bb8d-4e1269b8c235.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 207928,
-    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
-  },
-  {
-    "file": "design-6.jpg",
-    "description": "Original generated Pakistani carved sheesham front door with brass handle and traditional jali surround",
-    "source": "original generated",
-    "PNGpath": "/workspace/generated_images/exec-7552de98-e432-49b5-a379-808e84f9906f.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 218191,
-    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
-  },
-  {
-    "file": "assets/design-7.jpg",
-    "source": "original_generated",
-    "description": "Traditional Pakistani carved sheesham-inspired study desk and coordinated chair, with brass drawer pulls, cream plaster room, jali window and subtle Ajrak textile.",
-    "png_path": "/workspace/generated_images/exec-fd91d474-ffe8-4ba0-8dc2-8249db2a0d41.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 250437,
-    "sha256": "1dbbd4f8f88c1fc00fd5966b42afe163b9be3323479c74530fcb3d6b9a48d52a",
-    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
-  },
-  {
-    "file": "assets/design-8.jpg",
-    "source": "original_generated",
-    "description": "Traditional Chiniot-style two-door timber console with intricate carved jali cabinet doors, carved apron, brass handles and turned feet.",
-    "png_path": "/workspace/generated_images/exec-774a00e8-fa8e-4fff-b93f-236e287cf17e.png",
-    "size": [
-      1200,
-      900
-    ],
-    "bytes": 240613,
-    "sha256": "8f7c0c1f4298283fca36e7a9c1098e2e92cca1a6d887723a5d778705147b9dda",
-    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
-  },
-  {
     "file": "assets/hero.jpg",
     "source": "original_generated",
     "description": "Refined Pakistani family baithak/aangan with coordinated classic carved timber sofa, two armchairs, timber coffee table, cream cushions, Ajrak accents and a charpai.",
@@ -182,5 +84,135 @@
     "bytes": 88060,
     "sha256": "e323fa3105d5cd43dd831416102d3deadffebfe75f488a39d714e777d039a171",
     "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
+  },
+  {
+    "file": "assets/hero-majlis.jpg",
+    "source": "original_generated",
+    "description": "Cinematic indoor Pakistani family baithak with heavily carved dark Chinioti-style sheesham sofa set, cream upholstery, Ajrak accents, timber jali screens and regional floor tile.",
+    "png_path": "/workspace/generated_images/exec-7fba942e-4e71-443f-b86c-a48d29a92f5b.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 430916,
+    "sha256": "d5c4a404cc223c080a425e384e135c48577a1bd326cf6aae244426d1bf65c37d",
+    "usage_note": "Original AI-generated Pakistani furniture design/woodcraft concept. This is not a photograph of an actual Shahbaz Furniture product, customer home, craftsperson or workshop, and is not business proof."
+  },
+  {
+    "file": "assets/craft-detail.jpg",
+    "source": "original_generated",
+    "description": "Close-up illustrative Pakistani artisan hands carving floral sheesham-inspired furniture detail at a traditional timber workshop bench; no identifiable face.",
+    "png_path": "/workspace/generated_images/exec-6c10c7f6-17ca-4095-8b7c-02cfa97357dd.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 265324,
+    "sha256": "c0c8f555d94c828043474f96a4d5133039a8d6df725ce70ca38148b381095641",
+    "usage_note": "Original AI-generated Pakistani furniture design/woodcraft concept. This is not a photograph of an actual Shahbaz Furniture product, customer home, craftsperson or workshop, and is not business proof."
+  },
+  {
+    "file": "assets/design-1.jpg",
+    "description": "Fresh original Pakistani Chinioti sheesham double-bed concept with deep floral carving, stepped pointed-arch and jali crest headboard, coordinated bedside cabinets, cream linen and Ajrak accents in a local plaster-and-tile bedroom.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-2485db3a-33d7-41c8-ac92-fcc01189b57a.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 248059,
+    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
+    "sha256": "d71a71e3bde4656723e6c9e29cb9a6a63b0b2d1a2791773adffd64956e925470"
+  },
+  {
+    "file": "assets/design-2.jpg",
+    "description": "Fresh original Pakistani six-seat sheesham dining-set concept with deeply carved straight timber frames, pointed-arch chair crests, cream upholstery and an Ajrak runner in a jali-window family dining room.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-7fa0a811-8ad9-4230-9eac-306ca7b796cf.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 245245,
+    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
+    "sha256": "361961d50a25cb5a2dd742c2674e5371bfd946e15ca0897d1bb5157e737add66"
+  },
+  {
+    "file": "assets/design-3.jpg",
+    "description": "Fresh original traditional Pakistani baithak concept with a heavily Chinioti-carved timber sofa, two armchairs and low coffee table, cream cushions and a small Ajrak accent in a warm plaster-and-regional-tile family room.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-a363ccb4-bb12-4ccb-99f1-d2c058267898.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 249489,
+    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
+    "sha256": "04dd23d93e03a46b58d82fc1c5468fd61637a86b00b63bf3f6c8bd6c3618dd8f"
+  },
+  {
+    "file": "assets/design-4.jpg",
+    "description": "Fresh original Pakistani handwoven charpai concept with traditional diagonal cotton-rope weave, four handturned carved solid-wood corner legs and a folded Ajrak cloth in a Punjabi household aangan.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-be876056-ba72-4a9b-b2bf-5bd46fccbd4e.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 249540,
+    "usage_note": "Original AI-generated Pakistani furniture design concept. Not an actual customer photograph, completed project, business proof or verified product listing.",
+    "sha256": "ee98bc6554ffcca1ccecde210d20d3e6ccd8a75e1f81ce9ae4c92c672f862577"
+  },
+  {
+    "file": "assets/design-5.jpg",
+    "description": "Pakistani heavy carved three-door sheesham wardrobe in a modest local family bedroom",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-acfd53e2-334c-4a2b-9abb-ee1af3be974c.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 210282,
+    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
+    "sha256": "8e56b914f7b8ccb3d7de180aaee65da3c6dc365240d538ca50b5d022cbcc0d22"
+  },
+  {
+    "file": "assets/design-6.jpg",
+    "description": "Pakistani carved sheesham entrance door and jali surround in a local brick-and-plaster home",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-51077784-52d6-4eb6-bc1d-bee7f5c96564.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 210160,
+    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
+    "sha256": "616a980eefa6352162a4e2e91934dc0caeffd91e919225fbf0196cfb363774cb"
+  },
+  {
+    "file": "assets/design-7.jpg",
+    "description": "Pakistani heavy carved sheesham study desk with brass-pull drawers and coordinated chair",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-bdec9d3b-cae0-4627-b952-ec5c5042cf19.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 225035,
+    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
+    "sha256": "cfad1f4bbf592c43b0e3f8449e5b84ac7323c91806c26b170a706faa7d0755b6"
+  },
+  {
+    "file": "assets/design-8.jpg",
+    "description": "Pakistani heavy carved two-door sheesham jali console with a takht-inspired apron and turned legs",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-07427ad2-4364-4e16-9d9f-e5cfb37454c2.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 207946,
+    "usage_note": "AI-generated Pakistani furniture design concept, not an actual customer project or evidence of work completed by the business.",
+    "sha256": "d8fecbb6aac259a78e7af94c57c199dc93b4971b8a774736fa18703819c7fb01"
   }
 ]

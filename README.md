@@ -1,19 +1,20 @@
 # Shahbaz Furniture — پاکستانی ہنر
 
-A mobile-first Urdu and English furniture showroom for Pakistani customers.
+A new cinematic Pakistani furniture showroom, with a dark walnut/brass theme and English and Urdu displayed together.
 
 **Live site:** https://wahidzamman404.github.io/test4/
 
 ## Features
 
-- Urdu by default, with a complete English switch and correct RTL/LTR layouts.
+- English and Urdu displayed together throughout: headings, catalogue, design details, inquiries, staff roles and review controls. Urdu spans retain their own RTL direction and local Nastaliq typography.
 - Eight Pakistani furniture concepts: Chinioti bed, dining set, baithak seating, charpai, wardrobe, carved door, study desk and jali console.
 - Search, category filters, sorting, detailed design dialogs and a saved shortlist.
 - A design brief with wood, finish, furniture type and width selections.
 - A six-scene gallery with buttons, keyboard navigation, dots and touch swipes.
 - Staff role inquiries, a sample review carousel, a session-only review form and FAQs.
 - WhatsApp contact **+92 313 4683786**, supplied by the owner, with localized inquiry previews and copy support. The site never sends a message automatically.
-- Mobile bottom navigation, accessible native dialogs, reduced-motion support, local fonts and a WZDEV credit linking to https://wzdev.pk.
+- A full-width cinematic baithak hero, room collections, workshop story, design studio, responsive mobile menu, accessible native dialogs and reduced-motion support.
+- Floating WhatsApp on the right and a floating WZDEV creator link on the left, with compact circles on phones.
 
 ## Run locally
 
@@ -28,15 +29,15 @@ Open `http://localhost:8014`. Keep server output redirected to a log when runnin
 ## Edit the site
 
 - `site.config.js`: public brand and WhatsApp details and image mappings. Never put secrets here.
-- `index.html`: bilingual page copy, forms and sections. Translation attributes are `data-en` and `data-ur`.
+- `index.html`: bilingual page copy, forms and sections. English and Urdu copy is rendered together using semantic language and direction attributes.
 - `app.js`: bilingual catalogue, gallery, design studio, shortlist and inquiry logic.
 - `feedback.js`: sample team roles and browser-session reviews.
 - `styles.css`: responsive layouts and Urdu typography.
 - `assets/credits.json`: image provenance and font licence information.
 
-Furniture images are original AI-generated Pakistani design concepts, rather than completed customer projects. Staff portraits are fictional, and the initial reviews are labelled samples. Review submissions are held in memory for the current page session; they are not published or saved to a server. Replacing these with verified business material is recommended before using the site as an official catalogue. No showroom address, delivery promise, fixed price or warranty is invented.
+All eight product images and the new baithak/workshop images are original AI-generated Pakistani design concepts, with Chinioti carving, sheesham, jali, charpai, local tile details and Ajrak accents, rather than completed customer projects. Staff portraits are fictional, and the initial reviews are labelled samples. Review submissions are held in memory for the current page session; they are not published or saved to a server. Replacing these with verified business material is recommended before using the site as an official catalogue. No showroom address, delivery promise, fixed price or warranty is invented.
 
-The browser stores only the selected language and saved design IDs. Inquiry form details stay in the page until the visitor chooses to open WhatsApp or copy the message.
+The browser stores only saved design IDs. Inquiry form details stay in the page until the visitor chooses to open WhatsApp or copy the message.
 
 ## Verify
 

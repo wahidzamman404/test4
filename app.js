@@ -3,18 +3,17 @@
 
   const config = window.SF_CONFIG || {};
   const $ = (id) => document.getElementById(id);
-  const html = (value) => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+  const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+  const bi = (en, ur) => `<span class="bi-en" lang="en" dir="ltr">${escapeHTML(en)}</span><span class="bi-ur" lang="ur" dir="rtl">${escapeHTML(ur)}</span>`;
+  const pairText = (en, ur) => `${en}\n${ur}`;
+  const setBi = (id, en, ur) => { if ($(id)) $(id).innerHTML = bi(en, ur); };
   const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const heart = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 4.5a5 5 0 0 0-7 0L12 6l-1.5-1.5a5 5 0 0 0-7 7L12 20l8.5-8.5a5 5 0 0 0 0-7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const scrollBehavior = () => reducedMotion.matches ? 'auto' : 'smooth';
-  const languageKey = 'sf-test4-lang';
   const shortlistKey = 'sf-test4-shortlist';
-  const number = String(config.whatsappNumber || '').replace(/\D/g, '');
-  const validWhatsApp = /^[1-9]\d{9,14}$/.test(number);
-  let language = 'ur';
-  try { const stored = window.localStorage.getItem(languageKey); if (stored === 'en' || stored === 'ur') language = stored; } catch { /* Language switching still works without browser storage. */ }
-  window.SF_LANG = language;
+  const whatsappNumber = String(config.whatsappNumber || '').replace(/\D/g, '');
+  const validWhatsApp = /^[1-9]\d{9,14}$/.test(whatsappNumber);
 
   const copy = {
     en: {
@@ -64,13 +63,16 @@
       whatsappMessage: `السلام علیکم! مجھے ${config.brandUrdu || 'شہباز فرنیچر'} سے فرنیچر اور لکڑی کے حسبِ فرمائش کام کے بارے میں معلومات درکار ہیں۔`,
     },
   };
-  const t = (key, replacements = {}) => Object.entries(replacements).reduce((text, [name, value]) => text.replaceAll(`{${name}}`, String(value)), copy[language][key] || copy.en[key] || key);
-  const localNumber = (value) => language === 'ur' ? String(value).replace(/\d/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'[Number(digit)]) : String(value);
+
+  const text = (key, language) => copy[language][key] || copy.en[key] || key;
+  const textPair = (key) => bi(text(key, 'en'), text(key, 'ur'));
+  const localizedNumber = (value) => String(value).replace(/\d/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'[Number(digit)]);
   const latinNumber = (value) => String(value).replace(/[۰-۹٠-٩]/g, (digit) => {
-    const urdu = '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit);
-    return String(urdu >= 0 ? urdu : '٠١٢٣٤٥٦٧٨٩'.indexOf(digit));
+    const index = '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit);
+    return String(index >= 0 ? index : '٠١٢٣٤٥٦٧٨٩'.indexOf(digit));
   });
   const normalize = (value) => String(value).normalize('NFKC').toLocaleLowerCase().replace(/[ًٌٍَُِّْٰـ]/g, '').replace(/[يى]/g, 'ی').replace(/ك/g, 'ک');
+
   const categories = {
     living: { en: 'Living & baithak', ur: 'بیٹھک' }, dining: { en: 'Dining', ur: 'ڈائننگ' }, bedroom: { en: 'Bedroom', ur: 'بیڈروم' },
     storage: { en: 'Storage & wardrobes', ur: 'الماریاں اور شیلف' }, doors: { en: 'Doors', ur: 'دروازے' }, office: { en: 'Office', ur: 'دفتر' }, custom: { en: 'A custom project', ur: 'حسبِ فرمائش کام' },
@@ -135,37 +137,31 @@
       tags: 'console hallway entry table storage carved sideboard کنسول میز راہداری دراز',
     },
   ];
+
   const productMap = new Map(products.map((product) => [product.id, product]));
   const imageFor = (product) => config.designImages?.[product.id] || product.defaultImage;
-  const imageAlt = (product) => `${product.title[language]} — ${t('styleConcept')}`;
+  const imageAlt = (product) => `${product.title.en} / ${product.title.ur} — Generated design concept / تصوراتی ڈیزائن`;
   const validIds = (value) => Array.isArray(value) ? [...new Set(value.filter((id) => typeof id === 'string' && productMap.has(id)))] : [];
   let savedIds = [];
-  try { savedIds = validIds(JSON.parse(window.localStorage.getItem(shortlistKey) || '[]')); } catch { /* A temporary shortlist remains available when storage is blocked or invalid. */ }
+  try { savedIds = validIds(JSON.parse(window.localStorage.getItem(shortlistKey) || '[]')); } catch { /* A current-visit shortlist remains available without storage. */ }
   let activeCategory = 'all';
   let selectedDesign = null;
   let quoteDesignIds = [];
   let quoteStudio = null;
   let preparedSnapshot = null;
   let preparedText = '';
-  let quoteStatus = '';
-  let toastMessage = '';
   let toastTimer;
-  let managedPrompts = [];
   const origins = new WeakMap();
   const skipReturn = new WeakSet();
 
-  function focusOrigin(source, unwrapDialog = true) {
+  function focusOrigin(source) {
     if (!(source instanceof HTMLElement)) return { element: null, selector: '' };
-    const parentDialog = source.closest('dialog');
-    if (unwrapDialog && parentDialog && origins.has(parentDialog)) return origins.get(parentDialog);
+    const dialog = source.closest('dialog');
+    if (dialog && origins.has(dialog)) return origins.get(dialog);
     let selector = source.id ? `#${CSS.escape(source.id)}` : '';
     if (source.dataset.teamRole) selector = `[data-team-role="${CSS.escape(source.dataset.teamRole)}"][data-quote-open]`;
     if (source.dataset.id && productMap.has(source.dataset.id)) {
-      const kind = source.matches('.saved-remove') ? '.saved-remove'
-        : source.matches('.saved-image') ? '.saved-image'
-        : parentDialog?.id === 'saved-dialog' ? '.saved-copy .product-open'
-        : source.matches('.save-design') ? '.save-design'
-        : source.matches('.design-photo-button') ? '.design-photo-button' : '.design-title .product-open';
+      const kind = source.matches('.save-design') ? '.save-design' : source.matches('.design-photo-button') ? '.design-photo-button' : '.design-title .product-open';
       selector = `${kind}[data-id="${source.dataset.id}"]`;
     }
     return { element: source, selector };
@@ -203,26 +199,25 @@
   });
 
   function showToast(key) {
-    toastMessage = key;
     if (!$('toast')) return;
     window.clearTimeout(toastTimer);
-    $('toast').textContent = t(key);
+    $('toast').innerHTML = textPair(key);
     $('toast').classList.add('is-visible');
-    toastTimer = window.setTimeout(() => { $('toast')?.classList.remove('is-visible'); toastMessage = ''; }, 3200);
+    toastTimer = window.setTimeout(() => $('toast')?.classList.remove('is-visible'), 3200);
   }
   function renderCatalogue() {
     const search = normalize($('design-search')?.value || '').trim();
     const sort = $('design-sort')?.value || 'featured';
     const visible = products.filter((product) => (activeCategory === 'all' || product.category === activeCategory)
       && (!search || normalize(`${product.title.en} ${product.title.ur} ${product.description.en} ${product.description.ur} ${product.tags} ${categories[product.category].en} ${categories[product.category].ur}`).includes(search)));
-    if (sort === 'az') visible.sort((a, b) => a.title[language].localeCompare(b.title[language], language === 'ur' ? 'ur-PK' : 'en-PK'));
+    if (sort === 'az') visible.sort((a, b) => a.title.en.localeCompare(b.title.en, 'en-PK'));
     if ($('design-grid')) $('design-grid').innerHTML = visible.map((product) => `
       <article class="design-card">
-        <div class="design-photo"><button type="button" class="design-photo-button product-open" data-id="${product.id}" aria-label="${html(`${product.title[language]} — ${t('view')}`)}"><img src="${html(imageFor(product))}" alt="${html(imageAlt(product))}" loading="lazy" decoding="async" width="900" height="1100"><span class="design-photo-action">${html(t('view'))} ${arrow}</span></button><button type="button" class="save-design${savedIds.includes(product.id) ? ' is-saved' : ''}" data-id="${product.id}" aria-pressed="${savedIds.includes(product.id)}" aria-label="${html(`${product.title[language]} — ${t(savedIds.includes(product.id) ? 'removeAria' : 'saveAria')}`)}">${heart}</button></div>
-        <div class="design-info"><div class="design-meta"><small>${html(categories[product.category][language])}</small><span>${html(t('made'))}</span></div><h3 class="design-title"><button type="button" class="product-open" data-id="${product.id}">${html(product.title[language])}</button></h3><button type="button" class="design-more product-open" data-id="${product.id}">${html(t('view'))}${arrow}</button></div>
+        <div class="design-photo"><button type="button" class="design-photo-button product-open" data-id="${product.id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur} — ڈیزائن دیکھیں`)}"><img src="${escapeHTML(imageFor(product))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" decoding="async" width="900" height="1100"><span class="design-photo-action">${textPair('view')}${arrow}</span></button><button type="button" class="save-design${savedIds.includes(product.id) ? ' is-saved' : ''}" data-id="${product.id}" aria-pressed="${savedIds.includes(product.id)}" aria-label="${escapeHTML(`${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'en')}: ${product.title.en} / ${product.title.ur} — ${text(savedIds.includes(product.id) ? 'removeAria' : 'saveAria', 'ur')}`)}">${heart}</button></div>
+        <div class="design-info"><div class="design-meta"><small>${bi(categories[product.category].en, categories[product.category].ur)}</small><span>${textPair('made')}</span></div><h3 class="design-title"><button type="button" class="product-open" data-id="${product.id}">${bi(product.title.en, product.title.ur)}</button></h3><button type="button" class="design-more product-open" data-id="${product.id}">${textPair('view')}${arrow}</button></div>
       </article>
     `).join('');
-    if ($('design-count')) $('design-count').textContent = `${localNumber(visible.length)} ${t(visible.length === 1 ? 'design' : 'designs')}`;
+    setBi('design-count', `${visible.length} ${text(visible.length === 1 ? 'design' : 'designs', 'en')}`, `${localizedNumber(visible.length)} ڈیزائن`);
     if ($('design-empty')) $('design-empty').hidden = visible.length > 0;
     document.querySelectorAll('button[data-category]').forEach((button) => {
       const active = button.dataset.category === activeCategory;
@@ -232,33 +227,31 @@
   }
   function renderDetail() {
     if (!selectedDesign) return;
-    if ($('detail-title')) $('detail-title').textContent = selectedDesign.title[language];
-    if ($('detail-category')) $('detail-category').textContent = categories[selectedDesign.category][language];
-    if ($('detail-description')) $('detail-description').textContent = selectedDesign.description[language];
+    setBi('detail-title', selectedDesign.title.en, selectedDesign.title.ur);
+    setBi('detail-category', categories[selectedDesign.category].en, categories[selectedDesign.category].ur);
+    setBi('detail-description', selectedDesign.description.en, selectedDesign.description.ur);
     if ($('detail-image')) { $('detail-image').src = imageFor(selectedDesign); $('detail-image').alt = imageAlt(selectedDesign); }
-    if ($('detail-specs')) $('detail-specs').replaceChildren(...selectedDesign.specs[language].map((specification) => {
-      const item = document.createElement('li'); item.textContent = specification; return item;
-    }));
+    if ($('detail-specs')) $('detail-specs').innerHTML = selectedDesign.specs.en.map((specification, index) => `<li>${bi(specification, selectedDesign.specs.ur[index])}</li>`).join('');
     if ($('detail-save')) {
       const saved = savedIds.includes(selectedDesign.id);
       $('detail-save').setAttribute('aria-pressed', String(saved));
       $('detail-save').classList.toggle('is-saved', saved);
-      $('detail-save').textContent = t(saved ? 'saved' : 'save');
+      $('detail-save').innerHTML = textPair(saved ? 'saved' : 'save');
     }
   }
   function showDesign(id, source) {
-    const design = productMap.get(id);
-    if (!design) return;
-    selectedDesign = design;
+    const product = productMap.get(id);
+    if (!product) return;
+    selectedDesign = product;
     renderDetail();
     openDialog($('design-dialog'), source);
   }
   function renderSaved() {
     if ($('saved-items')) $('saved-items').innerHTML = savedIds.length ? savedIds.map((id) => {
       const product = productMap.get(id);
-      return `<article class="saved-item"><button type="button" class="saved-image product-open" data-id="${id}" aria-label="${html(`${product.title[language]} — ${t('view')}`)}"><img src="${html(imageFor(product))}" alt="${html(imageAlt(product))}" loading="lazy" width="160" height="180"></button><div class="saved-copy"><small>${html(categories[product.category][language])}</small><h3><button type="button" class="product-open" data-id="${id}">${html(product.title[language])}</button></h3><button type="button" class="saved-remove" data-id="${id}" aria-label="${html(`${product.title[language]} — ${t('removeAria')}`)}">${html(t('remove'))}</button></div></article>`;
-    }).join('') : `<div class="saved-empty"><h3>${html(t('emptySaved'))}</h3><p>${html(t('emptySavedHint'))}</p></div>`;
-    document.querySelectorAll('[data-saved-count]').forEach((element) => { element.textContent = localNumber(savedIds.length); });
+      return `<article class="saved-item"><button type="button" class="saved-image product-open" data-id="${id}" aria-label="${escapeHTML(`View ${product.title.en} / ${product.title.ur}`)}"><img src="${escapeHTML(imageFor(product))}" alt="${escapeHTML(imageAlt(product))}" loading="lazy" width="160" height="180"></button><div class="saved-copy"><small>${bi(categories[product.category].en, categories[product.category].ur)}</small><h3><button type="button" class="product-open" data-id="${id}">${bi(product.title.en, product.title.ur)}</button></h3><button type="button" class="saved-remove" data-id="${id}" aria-label="${escapeHTML(`Remove ${product.title.en} / ${product.title.ur} — فہرست سے ہٹائیں`)}">${textPair('remove')}</button></div></article>`;
+    }).join('') : `<div class="saved-empty"><h3>${textPair('emptySaved')}</h3><p>${textPair('emptySavedHint')}</p></div>`;
+    document.querySelectorAll('[data-saved-count]').forEach((element) => { element.textContent = String(savedIds.length); });
     if ($('saved-clear')) $('saved-clear').disabled = savedIds.length === 0;
     if ($('saved-inquire')) $('saved-inquire').disabled = savedIds.length === 0;
     document.querySelectorAll('.save-design[data-id]').forEach((button) => {
@@ -267,12 +260,12 @@
       const saved = savedIds.includes(product.id);
       button.setAttribute('aria-pressed', String(saved));
       button.classList.toggle('is-saved', saved);
-      button.setAttribute('aria-label', `${product.title[language]} — ${t(saved ? 'removeAria' : 'saveAria')}`);
+      button.setAttribute('aria-label', `${text(saved ? 'removeAria' : 'saveAria', 'en')}: ${product.title.en} / ${product.title.ur} — ${text(saved ? 'removeAria' : 'saveAria', 'ur')}`);
     });
     renderDetail();
   }
   function persistSaved() {
-    try { window.localStorage.setItem(shortlistKey, JSON.stringify(savedIds)); } catch { /* Only the current-visit shortlist is used when storage is unavailable. */ }
+    try { window.localStorage.setItem(shortlistKey, JSON.stringify(savedIds)); } catch { /* Only saved design IDs are kept, and the current visit still works without storage. */ }
     renderSaved();
   }
   function toggleSaved(id) {
@@ -284,121 +277,104 @@
   }
 
   function studioState() {
-    const project = $('studio-design')?.value;
-    const wood = $('studio-wood')?.value;
-    const finish = $('studio-finish')?.value;
+    const project = $('studio-design')?.value, wood = $('studio-wood')?.value, finish = $('studio-finish')?.value;
     const rawWidth = Number($('studio-width')?.value || 180);
     return {
-      project: Object.hasOwn(categories, project) ? project : 'custom', wood: Object.hasOwn(woods, wood) ? wood : 'sheesham',
-      finish: Object.hasOwn(finishes, finish) ? finish : 'natural', width: Number.isFinite(rawWidth) ? Math.min(300, Math.max(100, Math.round(rawWidth / 10) * 10)) : 180,
+      project: Object.hasOwn(categories, project) ? project : 'custom', wood: Object.hasOwn(woods, wood) ? wood : 'sheesham', finish: Object.hasOwn(finishes, finish) ? finish : 'natural',
+      width: Number.isFinite(rawWidth) ? Math.min(300, Math.max(100, Math.round(rawWidth / 10) * 10)) : 180,
     };
   }
-  function studioText(state) {
-    return `${categories[state.project][language]} · ${woods[state.wood][language]} · ${finishes[state.finish][language]} · ${localNumber(state.width)} ${t('width')}`;
+  function studioText(state, language) {
+    return `${categories[state.project][language]} · ${woods[state.wood][language]} · ${finishes[state.finish][language]} · ${language === 'ur' ? localizedNumber(state.width) : state.width} ${text('width', language)}`;
   }
   function updateStudio() {
     const state = studioState();
-    if ($('studio-width-output')) $('studio-width-output').textContent = `${localNumber(state.width)} ${language === 'ur' ? 'سینٹی میٹر' : 'cm'}`;
-    if ($('studio-summary')) $('studio-summary').textContent = `${studioText(state)}. ${t('materialNote')}`;
-    const swatch = $('studio-swatch');
-    if (swatch) { swatch.dataset.finish = state.finish; swatch.setAttribute('aria-label', finishes[state.finish][language]); }
+    setBi('studio-width-output', `${state.width} cm`, `${localizedNumber(state.width)} سینٹی میٹر`);
+    setBi('studio-summary', `${studioText(state, 'en')}. ${text('materialNote', 'en')}`, `${studioText(state, 'ur')}۔ ${text('materialNote', 'ur')}`);
+    if ($('studio-swatch')) { $('studio-swatch').dataset.finish = state.finish; $('studio-swatch').setAttribute('aria-label', `${finishes[state.finish].en} / ${finishes[state.finish].ur}`); }
   }
   function renderQuoteSelection() {
     quoteDesignIds = validIds(quoteDesignIds);
-    const parts = [];
-    if (quoteDesignIds.length) parts.push(`${t('selected')}: ${quoteDesignIds.map((id) => productMap.get(id).title[language]).join(language === 'ur' ? '، ' : ', ')}`);
-    if (quoteStudio) parts.push(`${t('studioBrief')}: ${studioText(quoteStudio)}`);
-    if ($('quote-selection')) $('quote-selection').textContent = parts.length ? parts.join('\n') : t('noSelection');
+    const en = [], ur = [];
+    if (quoteDesignIds.length) {
+      en.push(`${text('selected', 'en')}: ${quoteDesignIds.map((id) => productMap.get(id).title.en).join(', ')}`);
+      ur.push(`${text('selected', 'ur')}: ${quoteDesignIds.map((id) => productMap.get(id).title.ur).join('، ')}`);
+    }
+    if (quoteStudio) { en.push(`${text('studioBrief', 'en')}: ${studioText(quoteStudio, 'en')}`); ur.push(`${text('studioBrief', 'ur')}: ${studioText(quoteStudio, 'ur')}`); }
+    setBi('quote-selection', en.length ? en.join('\n') : text('noSelection', 'en'), ur.length ? ur.join('\n') : text('noSelection', 'ur'));
   }
   function setQuoteStatus(key) {
-    quoteStatus = key;
-    if ($('quote-status')) $('quote-status').textContent = key ? t(key) : '';
+    if ($('quote-status')) $('quote-status').innerHTML = key ? textPair(key) : '';
   }
   function invalidateQuote() {
     if (!preparedSnapshot) return;
-    preparedSnapshot = null;
-    preparedText = '';
+    preparedSnapshot = null; preparedText = '';
     if ($('quote-preview')) $('quote-preview').hidden = true;
     $('quote-wa')?.removeAttribute('href');
     setQuoteStatus('inquiryChanged');
   }
-  function appendSourcePrompt(source) {
-    const field = $('quote-message');
-    const current = source?.dataset.quoteMessage?.trim();
-    if (!field || !current) return;
-    const prompt = { en: source.dataset.enQuoteMessage || current, ur: source.dataset.urQuoteMessage || current, current };
-    if ([prompt.en, prompt.ur].some((text) => field.value.includes(text))) return;
-    field.value = field.value.trim() ? `${field.value.trim()}\n\n${current}` : current;
-    managedPrompts.push(prompt);
-  }
-  function translateManagedPrompts() {
-    const field = $('quote-message');
-    if (!field) return;
-    managedPrompts = managedPrompts.filter((prompt) => {
-      if (!field.value.includes(prompt.current)) return false;
-      const next = prompt[language];
-      field.value = field.value.replace(prompt.current, next);
-      prompt.current = next;
-      return true;
-    });
-  }
-  function openQuote({ project, productId, studio, source } = {}) {
+  function openQuote({ project, productId, studio, source, message } = {}) {
     quoteDesignIds = validIds([...savedIds, ...(productId ? [productId] : [])]);
     quoteStudio = studio ? { ...studio } : null;
     const product = productMap.get(productId);
     const nextProject = project || product?.category || studio?.project;
     if ($('quote-project') && Object.hasOwn(categories, nextProject)) $('quote-project').value = nextProject;
-    appendSourcePrompt(source);
-    renderQuoteSelection();
-    invalidateQuote();
+    const prompt = String(message || source?.dataset.quoteMessage || '').trim();
+    const field = $('quote-message');
+    if (field && prompt && !field.value.includes(prompt)) field.value = field.value.trim() ? `${field.value.trim()}\n\n${prompt}` : prompt;
+    renderQuoteSelection(); invalidateQuote();
     openDialog($('quote-dialog'), source || document.activeElement);
     if ($('quote-dialog')) $('quote-dialog').scrollTop = 0;
     $('quote-name')?.focus({ preventScroll: true });
   }
-  function bidiPhone(value) { return language === 'ur' ? `\u2066${value}\u2069` : value; }
+  window.SF_OPEN_QUOTE = openQuote;
   function buildQuote(snapshot) {
     return [
-      `${t('brand')} — ${t('inquiryHeading')}`, '',
-      `${t('name')}: ${snapshot.name}`, `${t('phone')}: ${bidiPhone(snapshot.phone)}`, `${t('city')}: ${snapshot.city || t('notSpecified')}`,
-      `${t('project')}: ${categories[snapshot.project]?.[language] || snapshot.project}`,
-      ...(snapshot.designIds.length ? ['', `${t('selected')}:`, ...snapshot.designIds.map((id) => `• ${productMap.get(id).title[language]}`)] : []),
-      ...(snapshot.studio ? ['', `${t('studioBrief')}:`, studioText(snapshot.studio)] : []),
-      '', `${t('details')}:`, snapshot.message, '', t('orderNote'),
+      `${text('brand', 'en')} / ${text('brand', 'ur')}`, 'PROJECT INQUIRY / کام کی تفصیل', '',
+      `Name / نام: ${snapshot.name}`, `Phone / فون: \u2066${snapshot.phone}\u2069`, `City / شہر: ${snapshot.city || 'Not specified / درج نہیں کیا گیا'}`,
+      `Project / کام کی نوعیت: ${categories[snapshot.project]?.en || snapshot.project} / ${categories[snapshot.project]?.ur || snapshot.project}`,
+      ...(snapshot.designIds.length ? ['', 'Selected designs / منتخب ڈیزائن:', ...snapshot.designIds.map((id) => `${productMap.get(id).title.en} / ${productMap.get(id).title.ur}`)] : []),
+      ...(snapshot.studio ? ['', 'Your design direction / آپ کی پسند کی تفصیل:', studioText(snapshot.studio, 'en'), studioText(snapshot.studio, 'ur')] : []),
+      '', 'Project details / آپ کے کام کی تفصیل:', snapshot.message, '', text('orderNote', 'en'), text('orderNote', 'ur'),
     ].join('\n');
   }
   function renderPreparedQuote() {
     if (!preparedSnapshot) return;
     preparedText = buildQuote(preparedSnapshot);
-    if ($('quote-summary')) { $('quote-summary').textContent = preparedText; $('quote-summary').dir = language === 'ur' ? 'rtl' : 'ltr'; $('quote-summary').lang = language; }
+    if ($('quote-summary')) { $('quote-summary').textContent = preparedText; $('quote-summary').dir = 'ltr'; }
     if ($('quote-preview')) $('quote-preview').hidden = false;
     const link = $('quote-wa');
     if (link) {
       link.target = '_blank'; link.rel = 'noopener noreferrer';
-      if (validWhatsApp) { link.href = `https://wa.me/${number}?text=${encodeURIComponent(preparedText)}`; link.removeAttribute('aria-disabled'); }
+      if (validWhatsApp) { link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(preparedText)}`; link.removeAttribute('aria-disabled'); }
       else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); }
     }
     setQuoteStatus(validWhatsApp ? 'inquiryReady' : 'missingWhatsApp');
   }
 
   const quoteForm = $('quote-form');
-  const quoteFields = () => quoteForm ? [...quoteForm.querySelectorAll('input, select, textarea')].filter((field) => field.willValidate) : [];
+  const fields = () => quoteForm ? [...quoteForm.querySelectorAll('input, select, textarea')].filter((field) => field.willValidate) : [];
+  function validationText(key, count) {
+    const en = text(key, 'en').replace('{count}', String(count));
+    const ur = text(key, 'ur').replace('{count}', localizedNumber(count));
+    return pairText(en, ur);
+  }
   function fieldMessage(field) {
     const value = field.value.trim();
-    if (field.required && !value) return t(({ 'quote-name': 'requiredName', 'quote-phone': 'requiredPhone', 'quote-project': 'requiredProject', 'quote-message': 'requiredMessage' })[field.id] || 'required');
+    if (field.required && !value) return validationText(({ 'quote-name': 'requiredName', 'quote-phone': 'requiredPhone', 'quote-project': 'requiredProject', 'quote-message': 'requiredMessage' })[field.id] || 'required');
     if (field.id === 'quote-phone' && value) {
       const digits = latinNumber(value).replace(/\D/g, '');
-      if (!/^\+?[0-9 ()-]+$/.test(latinNumber(value)) || digits.length < 7 || digits.length > 15) return t('invalidPhone');
+      if (!/^\+?[0-9 ()-]+$/.test(latinNumber(value)) || digits.length < 7 || digits.length > 15) return validationText('invalidPhone');
     }
-    if (value && field.minLength > 0 && value.length < field.minLength) return t('minimum', { count: localNumber(field.minLength) });
-    if (field.maxLength > 0 && value.length > field.maxLength) return t('maximum', { count: localNumber(field.maxLength) });
-    if (field.validity.patternMismatch || field.validity.typeMismatch) return field.id === 'quote-phone' ? t('invalidPhone') : t('checkFields');
-    if (field.validity.valueMissing) return t('required');
+    if (value && field.minLength > 0 && value.length < field.minLength) return validationText('minimum', field.minLength);
+    if (field.maxLength > 0 && value.length > field.maxLength) return validationText('maximum', field.maxLength);
+    if (field.validity.patternMismatch || field.validity.typeMismatch) return validationText(field.id === 'quote-phone' ? 'invalidPhone' : 'checkFields');
+    if (field.validity.valueMissing) return validationText('required');
     return '';
   }
   function refreshFieldError(field) {
     if (!(field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement)) return;
-    field.setCustomValidity('');
-    field.setCustomValidity(fieldMessage(field));
+    field.setCustomValidity(''); field.setCustomValidity(fieldMessage(field));
   }
   quoteForm?.addEventListener('invalid', (event) => { refreshFieldError(event.target); setQuoteStatus('checkFields'); }, true);
   quoteForm?.addEventListener('input', (event) => {
@@ -407,27 +383,23 @@
     invalidateQuote();
   });
   quoteForm?.addEventListener('change', invalidateQuote);
-  quoteForm?.addEventListener('reset', () => {
-    managedPrompts = [];
-    quoteFields().forEach((field) => field.setCustomValidity(''));
-    invalidateQuote();
-  });
+  quoteForm?.addEventListener('reset', () => { fields().forEach((field) => field.setCustomValidity('')); invalidateQuote(); });
   quoteForm?.addEventListener('submit', (event) => {
     event.preventDefault();
     ['quote-name', 'quote-phone', 'quote-city', 'quote-message'].forEach((id) => { if ($(id)) $(id).value = $(id).value.trim(); });
     if ($('quote-phone')) $('quote-phone').value = latinNumber($('quote-phone').value);
-    quoteFields().forEach(refreshFieldError);
+    fields().forEach(refreshFieldError);
     if (!quoteForm.reportValidity()) { setQuoteStatus('checkFields'); return; }
-    const data = new FormData(quoteForm);
-    const value = (name) => String(data.get(name) || '').trim();
+    const data = new FormData(quoteForm), value = (name) => String(data.get(name) || '').trim();
     preparedSnapshot = { name: value('name'), phone: value('phone'), city: value('city'), project: value('project'), message: value('message'), designIds: [...quoteDesignIds], studio: quoteStudio ? { ...quoteStudio } : null };
     renderPreparedQuote();
     $('quote-preview')?.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest' });
   });
   if ($('quote-phone')) { $('quote-phone').dir = 'ltr'; $('quote-phone').inputMode = 'tel'; }
-  function fallbackCopy(text) {
+  ['quote-name', 'quote-city', 'quote-message'].forEach((id) => { if ($(id)) $(id).dir = 'auto'; });
+  function fallbackCopy(value) {
     const field = document.createElement('textarea');
-    field.value = text; field.setAttribute('readonly', ''); field.setAttribute('aria-label', t('details'));
+    field.value = value; field.setAttribute('readonly', ''); field.setAttribute('aria-label', 'Project inquiry / کام کی تفصیل');
     field.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;';
     ($('quote-dialog')?.open ? $('quote-dialog') : document.body).append(field);
     field.focus(); field.select();
@@ -445,19 +417,24 @@
     } catch { setQuoteStatus('copyFailed'); }
     if (button instanceof HTMLElement) button.focus({ preventScroll: true });
   });
+  document.querySelectorAll('[data-wa]').forEach((link) => {
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    if (validWhatsApp) { link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(pairText(text('whatsappMessage', 'en'), text('whatsappMessage', 'ur')))}`; link.removeAttribute('aria-disabled'); }
+    else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); }
+  });
 
   const galleryProducts = ['chiniot-bed', 'carved-dining', 'baithak-seating', 'wooden-charpai', 'entrance-door', 'carved-console'];
   let galleryIndex = 0;
-  function galleryImage(index) { return config.galleryImages?.[index] || imageFor(productMap.get(galleryProducts[index])); }
   function renderGallery() {
     const product = productMap.get(galleryProducts[galleryIndex]);
-    if ($('gallery-image')) { $('gallery-image').src = galleryImage(galleryIndex); $('gallery-image').alt = imageAlt(product); }
-    if ($('gallery-title')) $('gallery-title').textContent = product.title[language];
-    if ($('gallery-caption')) $('gallery-caption').textContent = t('galleryCaption');
-    if ($('gallery-index')) $('gallery-index').textContent = `${localNumber(String(galleryIndex + 1).padStart(2, '0'))} / ${localNumber(String(galleryProducts.length).padStart(2, '0'))}`;
+    if ($('gallery-image')) { $('gallery-image').src = config.galleryImages?.[galleryIndex] || imageFor(product); $('gallery-image').alt = imageAlt(product); }
+    setBi('gallery-title', product.title.en, product.title.ur);
+    setBi('gallery-caption', text('galleryCaption', 'en'), text('galleryCaption', 'ur'));
+    const position = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(galleryProducts.length).padStart(2, '0')}`;
+    setBi('gallery-index', position, localizedNumber(position));
     document.querySelectorAll('#gallery-dots button').forEach((button, index) => {
       button.setAttribute('aria-pressed', String(index === galleryIndex));
-      button.setAttribute('aria-label', `${t('galleryShow')} ${localNumber(index + 1)}: ${productMap.get(galleryProducts[index]).title[language]}`);
+      button.setAttribute('aria-label', `Show design ${index + 1}: ${productMap.get(galleryProducts[index]).title.en} / ${productMap.get(galleryProducts[index]).title.ur} — تصویر دیکھیں`);
       button.classList.toggle('active', index === galleryIndex);
     });
   }
@@ -472,10 +449,7 @@
   if (galleryStage && !galleryStage.hasAttribute('tabindex')) galleryStage.tabIndex = 0;
   galleryStage?.addEventListener('keydown', (event) => {
     if (event.target instanceof Element && event.target.closest('input, select, textarea, [contenteditable="true"]')) return;
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault();
-      showGallery(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1) * (language === 'ur' ? -1 : 1));
-    }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showGallery(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1)); }
   });
   let swipe = null;
   galleryStage?.addEventListener('pointerdown', (event) => {
@@ -484,47 +458,10 @@
   });
   galleryStage?.addEventListener('pointerup', (event) => {
     if (!swipe || swipe.id !== event.pointerId) return;
-    const x = event.clientX - swipe.x, y = event.clientY - swipe.y;
-    swipe = null;
-    if (Math.abs(x) > 45 && Math.abs(x) > Math.abs(y) * 1.4) showGallery(galleryIndex + (x < 0 ? 1 : -1) * (language === 'ur' ? -1 : 1));
+    const x = event.clientX - swipe.x, y = event.clientY - swipe.y; swipe = null;
+    if (Math.abs(x) > 45 && Math.abs(x) > Math.abs(y) * 1.4) showGallery(galleryIndex + (x < 0 ? 1 : -1));
   });
   galleryStage?.addEventListener('pointercancel', () => { swipe = null; });
-
-  function applyStaticLanguage() {
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ur' ? 'rtl' : 'ltr';
-    document.title = t('pageTitle');
-    document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = localNumber(new Date().getFullYear()); });
-    document.querySelectorAll('[data-en][data-ur]').forEach((element) => { element.textContent = element.dataset[language]; });
-    document.querySelectorAll('[data-en-placeholder][data-ur-placeholder]').forEach((element) => { element.setAttribute('placeholder', element.getAttribute(`data-${language}-placeholder`)); });
-    document.querySelectorAll('[data-en-label][data-ur-label]').forEach((element) => { element.setAttribute('aria-label', element.getAttribute(`data-${language}-label`)); });
-    const toggle = $('language-toggle');
-    if (toggle) { toggle.textContent = language === 'ur' ? 'English' : 'اردو'; toggle.setAttribute('aria-label', t('switchLanguage')); toggle.lang = language === 'ur' ? 'en' : 'ur'; }
-    document.querySelectorAll('[data-wa]').forEach((link) => {
-      link.target = '_blank'; link.rel = 'noopener noreferrer';
-      if (validWhatsApp) { link.href = `https://wa.me/${number}?text=${encodeURIComponent(t('whatsappMessage'))}`; link.removeAttribute('aria-disabled'); }
-      else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); }
-    });
-    if ($('menu-toggle')) $('menu-toggle').setAttribute('aria-label', t($('menu-toggle').getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu'));
-  }
-  function setLanguage(next, persist = true) {
-    if (next !== 'ur' && next !== 'en') return;
-    const active = document.activeElement;
-    const activeOrigin = focusOrigin(active, false);
-    language = next; window.SF_LANG = next;
-    if (persist) { try { window.localStorage.setItem(languageKey, language); } catch { /* The current language is kept in memory. */ } }
-    applyStaticLanguage();
-    translateManagedPrompts();
-    renderCatalogue(); renderSaved(); updateStudio(); renderGallery(); renderQuoteSelection();
-    if (preparedSnapshot) { preparedSnapshot.message = $('quote-message')?.value.trim() || preparedSnapshot.message; renderPreparedQuote(); }
-    else if (quoteStatus) setQuoteStatus(quoteStatus);
-    if (toastMessage && $('toast')) $('toast').textContent = t(toastMessage);
-    quoteFields().forEach((field) => { if (field.validity.customError) refreshFieldError(field); });
-    document.dispatchEvent(new CustomEvent('languagechange', { detail: { language } }));
-    if (active instanceof HTMLElement && !active.isConnected) returnFocus(activeOrigin);
-  }
-  window.SF_SET_LANGUAGE = setLanguage;
-  $('language-toggle')?.addEventListener('click', () => setLanguage(language === 'ur' ? 'en' : 'ur'));
 
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element ? event.target : null;
@@ -535,57 +472,53 @@
     const product = target?.closest('.product-open[data-id]');
     if (product) { event.preventDefault(); showDesign(product.dataset.id, product); return; }
     const remove = target?.closest('.saved-remove[data-id]');
-    if (remove) {
-      event.preventDefault(); toggleSaved(remove.dataset.id);
-      ($('saved-items')?.querySelector('.saved-remove') || $('saved-dialog')?.querySelector('[data-close-dialog]'))?.focus();
+    if (remove) { event.preventDefault(); toggleSaved(remove.dataset.id); ($('saved-items')?.querySelector('.saved-remove') || $('saved-dialog')?.querySelector('[data-close-dialog]'))?.focus(); return; }
+    const saved = target?.closest('.saved-open');
+    if (saved) { event.preventDefault(); renderSaved(); openDialog($('saved-dialog'), saved); return; }
+    const quote = target?.closest('[data-quote-open]');
+    if (quote) { event.preventDefault(); closeMenu(); openQuote({ project: quote.dataset.project, source: quote }); return; }
+    const shop = target?.closest('[data-shop-category]');
+    if (shop) {
+      const category = shop.dataset.shopCategory;
+      if (Object.hasOwn(categories, category)) { activeCategory = category; if ($('design-search')) $('design-search').value = ''; renderCatalogue(); closeMenu(); }
       return;
     }
-    const savedOpener = target?.closest('.saved-open');
-    if (savedOpener) { event.preventDefault(); renderSaved(); openDialog($('saved-dialog'), savedOpener); return; }
-    const quoteOpener = target?.closest('[data-quote-open]');
-    if (quoteOpener) { event.preventDefault(); closeMenu(); openQuote({ project: quoteOpener.dataset.project, source: quoteOpener }); return; }
     const filter = target?.closest('button[data-category]');
-    if (filter) {
-      const category = filter.dataset.category;
-      if (category === 'all' || Object.hasOwn(categories, category)) { activeCategory = category; renderCatalogue(); }
-    }
+    if (filter && (filter.dataset.category === 'all' || Object.hasOwn(categories, filter.dataset.category))) { activeCategory = filter.dataset.category; renderCatalogue(); }
   });
   $('design-search')?.addEventListener('input', renderCatalogue);
   $('design-sort')?.addEventListener('change', renderCatalogue);
   $('detail-save')?.addEventListener('click', () => { if (selectedDesign) toggleSaved(selectedDesign.id); });
   $('detail-inquire')?.addEventListener('click', () => { if (selectedDesign) openQuote({ productId: selectedDesign.id, source: $('detail-inquire') }); });
   $('saved-inquire')?.addEventListener('click', () => openQuote({ source: $('saved-inquire') }));
-  $('saved-clear')?.addEventListener('click', () => {
-    savedIds = []; persistSaved(); showToast('toastCleared'); $('saved-dialog')?.querySelector('[data-close-dialog]')?.focus();
-  });
+  $('saved-clear')?.addEventListener('click', () => { savedIds = []; persistSaved(); showToast('toastCleared'); $('saved-dialog')?.querySelector('[data-close-dialog]')?.focus(); });
   $('studio-form')?.addEventListener('input', updateStudio);
   $('studio-form')?.addEventListener('change', updateStudio);
   $('studio-form')?.addEventListener('submit', (event) => event.preventDefault());
   $('studio-inquire')?.addEventListener('click', (event) => { event.preventDefault(); openQuote({ studio: studioState(), source: event.currentTarget }); });
   window.addEventListener('storage', (event) => {
-    if (event.key === languageKey && (event.newValue === 'ur' || event.newValue === 'en')) setLanguage(event.newValue, false);
-    if (event.key === shortlistKey) { try { savedIds = validIds(JSON.parse(event.newValue || '[]')); } catch { savedIds = []; } renderSaved(); }
+    if (event.key !== shortlistKey) return;
+    try { savedIds = validIds(JSON.parse(event.newValue || '[]')); } catch { savedIds = []; }
+    renderSaved();
   });
 
   const menu = $('menu-toggle'), navigation = $('site-nav');
-  function closeMenu() { navigation?.classList.remove('is-open'); menu?.setAttribute('aria-expanded', 'false'); menu?.setAttribute('aria-label', t('openMenu')); }
+  function closeMenu() { navigation?.classList.remove('is-open'); menu?.setAttribute('aria-expanded', 'false'); menu?.setAttribute('aria-label', 'Open navigation / مینو کھولیں'); }
   menu?.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') !== 'true';
-    menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', t(open ? 'closeMenu' : 'openMenu')); navigation?.classList.toggle('is-open', open);
+    menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Close navigation / مینو بند کریں' : 'Open navigation / مینو کھولیں'); navigation?.classList.toggle('is-open', open);
   });
   navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   document.addEventListener('click', (event) => { if (menu?.getAttribute('aria-expanded') === 'true' && !menu.contains(event.target) && !navigation?.contains(event.target)) closeMenu(); });
-  $('search-jump')?.addEventListener('click', () => {
-    closeMenu(); ($('collection') || $('design-grid'))?.scrollIntoView({ behavior: scrollBehavior(), block: 'start' }); $('design-search')?.focus({ preventScroll: true });
-  });
+  $('search-jump')?.addEventListener('click', () => { closeMenu(); ($('collection') || $('design-grid'))?.scrollIntoView({ behavior: scrollBehavior(), block: 'start' }); $('design-search')?.focus({ preventScroll: true }); });
   let scrollQueued = false;
   function updateScroll() { $('site-header')?.classList.toggle('is-scrolled', window.scrollY > 20); scrollQueued = false; }
   window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; window.requestAnimationFrame(updateScroll); } }, { passive: true });
-  document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = localNumber(new Date().getFullYear()); });
+  document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = String(new Date().getFullYear()); });
   const faqItems = document.querySelectorAll('.faq-list details');
   faqItems.forEach((item) => item.addEventListener('toggle', () => { if (item.open) faqItems.forEach((other) => { if (other !== item) other.open = false; }); }));
-  setLanguage(language, false);
-  updateScroll();
+  document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr';
+  renderCatalogue(); renderSaved(); updateStudio(); renderGallery(); renderQuoteSelection(); updateScroll();
   document.documentElement.classList.add('js-ready');
 })();

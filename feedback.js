@@ -1,4 +1,4 @@
-/* Bilingual demonstration profiles and browser-session reviews. */
+/* Staff profiles and safe, browser-session reviews in English and Urdu together. */
 (() => {
   'use strict';
 
@@ -20,54 +20,50 @@
   let pendingFrame = 0;
   let hasSubmitted = false;
 
-  const isUrdu = () => window.SF_LANG !== 'en';
-  const tr = (english, urdu) => isUrdu() ? urdu : english;
-  const number = (value) => isUrdu() ? String(value).replace(/\d/g, digit => '۰۱۲۳۴۵۶۷۸۹'[Number(digit)]) : String(value);
-
   const profiles = [
     {
       id: 'designer',
-      title: { en: 'Design consultant', ur: 'ڈیزائن مشیر' },
-      role: { en: 'Ideas & room planning', ur: 'خیالات اور جگہ کی منصوبہ بندی' },
+      title: { en: 'Furniture design adviser', ur: 'فرنیچر ڈیزائن مشیر' },
+      role: { en: 'Your room. Your family. Your style.', ur: 'آپ کا کمرہ، آپ کی پسند' },
       description: {
-        en: 'Talk through your room, preferred style, and the furniture proportions that make your space work beautifully.',
-        ur: 'اپنے کمرے، پسندیدہ انداز اور فرنیچر کے مناسب سائز پر بات کریں، تاکہ ہر چیز آپ کی جگہ کے مطابق ہو۔',
+        en: 'Plan a family baithak, a carved Chinioti bed, or a dining set around your room and the way your family uses it.',
+        ur: 'گھر کی بیٹھک، چنیوٹی نقش دار پلنگ یا ڈائننگ سیٹ اپنے کمرے اور گھر والوں کی ضرورت کے مطابق بنوانے پر بات کریں۔',
       },
       action: { en: 'Discuss your design', ur: 'اپنے ڈیزائن پر بات کریں' },
       image: 'assets/staff-designer.jpg',
       inquiry: {
-        en: 'I would like to speak with your design consultant about my furniture project. My idea is: ',
-        ur: 'میں اپنے فرنیچر کے منصوبے کے بارے میں آپ کے ڈیزائن مشیر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا خیال یہ ہے: ',
+        en: 'I would like to speak with your furniture design adviser about my room and preferred furniture style. My idea is:',
+        ur: 'میں اپنے کمرے اور پسندیدہ فرنیچر کے بارے میں آپ کے ڈیزائن مشیر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا خیال یہ ہے:',
       },
     },
     {
       id: 'maker',
-      title: { en: 'Workshop specialist', ur: 'کاریگر' },
-      role: { en: 'Materials & craftsmanship', ur: 'لکڑی اور کاریگری کی تفصیلات' },
+      title: { en: 'Workshop specialist', ur: 'لکڑی اور کاریگری کے ماہر' },
+      role: { en: 'Sheesham. Carving. The right finish.', ur: 'شیشم، نقش و نگار اور پسند کی پالش' },
       description: {
-        en: 'Explore timber choices, construction details, and finishes before deciding on the right direction for your piece.',
-        ur: 'اپنی پسند کا فرنیچر طے کرنے سے پہلے لکڑی، بناوٹ، جوڑوں اور پالش کی تفصیلات سمجھیں۔',
+        en: 'Discuss sheesham grain, carved details, charpai frames, joinery, and the polish that suits your furniture.',
+        ur: 'شیشم کی لکڑی، نقش و نگار، چارپائی کے فریم، مضبوط جوڑوں اور فرنیچر کے لیے مناسب پالش کی تفصیلات سمجھیں۔',
       },
-      action: { en: 'Ask about the details', ur: 'کاریگری کے بارے میں پوچھیں' },
+      action: { en: 'Ask about the woodwork', ur: 'کاریگری کے بارے میں پوچھیں' },
       image: 'assets/staff-maker.jpg',
       inquiry: {
-        en: 'I would like to speak with your workshop specialist about materials, construction, and finishes. My question is: ',
-        ur: 'میں لکڑی، بناوٹ اور پالش کے بارے میں آپ کے کاریگر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا سوال یہ ہے: ',
+        en: 'I would like to discuss timber, carving, construction, and polish with your workshop specialist. My question is:',
+        ur: 'میں لکڑی، نقش و نگار، بناوٹ اور پالش کے بارے میں آپ کے ماہر کاریگر سے بات کرنا چاہتا/چاہتی ہوں۔ میرا سوال یہ ہے:',
       },
     },
     {
       id: 'coordinator',
-      title: { en: 'Project coordinator', ur: 'پروجیکٹ کوآرڈینیٹر' },
-      role: { en: 'Your project, clearly planned', ur: 'آپ کے کام کی واضح منصوبہ بندی' },
+      title: { en: 'Project coordinator', ur: 'آپ کے کام کی رہنمائی' },
+      role: { en: 'From one piece to a complete home.', ur: 'ایک خاص چیز سے پورے گھر تک' },
       description: {
-        en: 'Prepare measurements, discuss your requirements, and understand the next steps for a made-to-order furniture project.',
-        ur: 'ناپ اور ضروریات تیار کریں، اپنے کام کی تفصیل بتائیں اور آرڈر پر بننے والے فرنیچر کے اگلے مراحل سمجھیں۔',
+        en: 'Organize sizes, quantities, a budget in PKR, and your delivery or fitting requirements before a furniture order.',
+        ur: 'آرڈر سے پہلے سائز، تعداد، پاکستانی روپے میں بجٹ، ترسیل اور فٹنگ کی ضروریات پر واضح بات کریں۔',
       },
       action: { en: 'Plan your project', ur: 'اپنے کام کی منصوبہ بندی کریں' },
       image: 'assets/staff-support.jpg',
       inquiry: {
-        en: 'I would like to speak with your project coordinator about planning a furniture project. My requirements are: ',
-        ur: 'میں فرنیچر کے کام کی منصوبہ بندی کے لیے آپ کے پروجیکٹ کوآرڈینیٹر سے بات کرنا چاہتا/چاہتی ہوں۔ میری ضروریات یہ ہیں: ',
+        en: 'I would like help planning the sizes, quantities, budget, and delivery requirements for my furniture project. My requirements are:',
+        ur: 'میں اپنے فرنیچر کے کام کے سائز، تعداد، بجٹ اور ترسیل کی منصوبہ بندی کے لیے رہنمائی چاہتا/چاہتی ہوں۔ میری ضروریات یہ ہیں:',
       },
     },
   ];
@@ -77,8 +73,8 @@
       name: 'A. K.', initials: 'AK', rating: 5,
       city: { en: 'Lahore', ur: 'لاہور' },
       text: {
-        en: 'Seeing the different wood tones and designs together made it much easier to imagine the right furniture for our home.',
-        ur: 'لکڑی کے مختلف رنگ اور ڈیزائن ایک ساتھ دیکھ کر یہ سمجھنا آسان ہو گیا کہ ہمارے گھر کے لیے کون سا فرنیچر مناسب ہوگا۔',
+        en: 'The carved bedroom designs helped us picture a Chinioti-style bed in our own room. Having the wood and polish details together was useful.',
+        ur: 'نقش دار بیڈروم ڈیزائن دیکھ کر اپنے کمرے کے لیے چنیوٹی انداز کا پلنگ سوچنا آسان ہو گیا۔ لکڑی اور پالش کی تفصیلات ایک ساتھ دیکھنا اچھا لگا۔',
       },
       sample: true,
     },
@@ -86,8 +82,8 @@
       name: 'M. A.', initials: 'MA', rating: 4,
       city: { en: 'Islamabad', ur: 'اسلام آباد' },
       text: {
-        en: 'I liked being able to shortlist a few ideas and include the details in one clear project inquiry. A very helpful starting point.',
-        ur: 'چند پسندیدہ ڈیزائن محفوظ کر کے ایک ہی پیغام میں اپنی ضروریات لکھنا اچھا لگا۔ کام شروع کرنے کا یہ طریقہ بہت مددگار ہے۔',
+        en: 'I could save a few baithak and dining ideas, then put our measurements and budget into one clear inquiry.',
+        ur: 'بیٹھک اور ڈائننگ کے چند پسندیدہ ڈیزائن محفوظ کر کے اپنے ناپ اور بجٹ کی تفصیل ایک ہی درخواست میں لکھ سکا۔',
       },
       sample: true,
     },
@@ -95,8 +91,8 @@
       name: 'S. R.', initials: 'SR', rating: 5,
       city: { en: 'Karachi', ur: 'کراچی' },
       text: {
-        en: 'The balance of simple modern shapes and warm wooden details feels right for a Pakistani family home.',
-        ur: 'سادہ جدید انداز اور لکڑی کی گرمجوشی کا امتزاج پاکستانی گھر کے لیے بہت موزوں محسوس ہوتا ہے۔',
+        en: 'The traditional woodwork feels familiar to a Pakistani home. The design gallery is a good place to start a conversation with the family.',
+        ur: 'روایتی لکڑی کا کام پاکستانی گھر کا اپنا سا احساس دیتا ہے۔ گھر والوں کے ساتھ ڈیزائن پسند کرنے کی شروعات کے لیے یہ گیلری اچھی ہے۔',
       },
       sample: true,
     },
@@ -107,6 +103,18 @@
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
+  }
+
+  function bilingual(tag, className, english, urdu) {
+    const wrapper = element(tag, className);
+    const en = element('span', 'bi-en', english);
+    en.lang = 'en';
+    en.dir = 'ltr';
+    const ur = element('span', 'bi-ur', urdu);
+    ur.lang = 'ur';
+    ur.dir = 'rtl';
+    wrapper.append(en, ur);
+    return wrapper;
   }
 
   function icon(id) {
@@ -120,39 +128,31 @@
     return svg;
   }
 
-  function localize(value) {
-    return typeof value === 'string' ? value : tr(value.en, value.ur);
-  }
-
   function createProfile(profile) {
     const card = element('article', 'team-card');
     const photo = element('div', 'team-photo');
     const image = element('img');
     image.src = profile.image;
-    image.alt = tr(`Illustrative ${profile.title.en.toLowerCase()} portrait`, `${profile.title.ur} کی مثالی تصویر`);
+    image.alt = `${profile.title.en}, illustrative profile — ${profile.title.ur} کی مثالی تصویر`;
     image.loading = 'lazy';
     image.decoding = 'async';
     image.width = 720;
     image.height = 900;
-    photo.append(image, element('span', 'demo-tag', tr('Demo profile', 'نمونہ پروفائل')));
+    photo.append(image, bilingual('span', 'demo-tag', 'Demo profile', 'نمونہ پروفائل'));
 
     const content = element('div', 'team-content');
     content.append(
-      element('p', 'team-role', localize(profile.role)),
-      element('h3', 'team-title', localize(profile.title)),
-      element('p', 'team-description', localize(profile.description)),
+      bilingual('p', 'team-role', profile.role.en, profile.role.ur),
+      bilingual('h3', 'team-title', profile.title.en, profile.title.ur),
+      bilingual('p', 'team-description', profile.description.en, profile.description.ur),
     );
-    const contact = element('button', 'team-contact', localize(profile.action));
+    const contact = element('button', 'team-contact');
     contact.type = 'button';
     contact.dataset.quoteOpen = '';
     contact.dataset.teamRole = profile.id;
-    contact.dataset.quoteMessage = localize(profile.inquiry);
-    contact.dataset.enQuoteMessage = profile.inquiry.en;
-    contact.dataset.urQuoteMessage = profile.inquiry.ur;
+    contact.dataset.quoteMessage = `${profile.inquiry.en}\n${profile.inquiry.ur}`;
     contact.setAttribute('aria-haspopup', 'dialog');
-    const arrow = icon('i-arrow');
-    arrow.classList.add('directional');
-    contact.append(arrow);
+    contact.append(bilingual('span', 'team-contact-label', profile.action.en, profile.action.ur), icon('i-arrow'));
     content.append(contact);
     card.append(photo, content);
     return card;
@@ -166,15 +166,26 @@
     const card = element('article', 'review-card');
     const stars = element('div', 'review-stars');
     stars.setAttribute('role', 'img');
-    stars.setAttribute('aria-label', tr(`${review.rating} out of 5 stars`, `۵ میں سے ${number(review.rating)} ستارے`));
+    stars.setAttribute('aria-label', `${review.rating} out of 5 stars — ۵ میں سے ${review.rating} ستارے`);
     for (let index = 0; index < 5; index += 1) {
       const star = icon('i-star');
       star.style.fill = index < review.rating ? 'currentColor' : 'none';
       stars.append(star);
     }
-    const badge = element('span', 'demo-tag', review.sample ? tr('Sample review', 'نمونہ تبصرہ') : tr('On this device', 'اسی ڈیوائس پر'));
+    const badge = review.sample
+      ? bilingual('span', 'demo-tag', 'Sample review', 'نمونہ تبصرہ')
+      : bilingual('span', 'demo-tag', 'On this device', 'اسی ڈیوائس پر');
 
-    const text = element('blockquote', 'review-text', localize(review.text));
+    let text;
+    if (review.sample) text = bilingual('blockquote', 'review-text', review.text.en, review.text.ur);
+    else {
+      text = element('blockquote', 'review-text');
+      const typed = element('span', /[\u0600-\u06ff]/.test(review.text) ? 'bi-ur user-review-text' : 'bi-en user-review-text', review.text);
+      typed.dir = 'auto';
+      if (/[\u0600-\u06ff]/.test(review.text)) typed.lang = 'ur';
+      text.append(typed);
+    }
+
     const author = element('div', 'review-author');
     const initials = element('span', 'review-initials', review.initials || initialsFor(review.name));
     initials.setAttribute('aria-hidden', 'true');
@@ -183,13 +194,12 @@
     const name = element('strong', 'review-name', review.name);
     name.dir = 'auto';
     person.append(name);
-    const cityText = localize(review.city);
-    if (cityText) {
-      const city = element('span', 'review-city', cityText);
+    if (review.sample) person.append(bilingual('span', 'review-city', review.city.en, review.city.ur));
+    else if (review.city) {
+      const city = element('span', 'review-city', review.city);
       city.dir = 'auto';
       person.append(city);
     }
-    if (!review.sample) text.dir = 'auto';
     author.append(initials, person);
     card.append(stars, badge, text, author);
     return card;
@@ -218,8 +228,8 @@
     if (previousButton) previousButton.disabled = !previousAvailable;
     if (nextButton) nextButton.disabled = !nextAvailable;
     if (counter) {
-      counter.textContent = tr(`${currentIndex + 1} / ${cards.length}`, `${number(currentIndex + 1)} / ${number(cards.length)}`);
-      counter.setAttribute('aria-label', tr(`Review ${currentIndex + 1} of ${cards.length}`, `کل ${number(cards.length)} میں سے تبصرہ ${number(currentIndex + 1)}`));
+      counter.textContent = `${currentIndex + 1} / ${cards.length}`;
+      counter.setAttribute('aria-label', `Review ${currentIndex + 1} of ${cards.length} — کل ${cards.length} میں سے تبصرہ ${currentIndex + 1}`);
     }
   }
 
@@ -239,40 +249,26 @@
   function updateReviewStatus() {
     const status = document.querySelector('#reviews-status');
     if (!status) return;
-    status.textContent = hasSubmitted
-      ? tr('Your review was added to this browser session. It has not been posted publicly.', 'آپ کا تبصرہ اسی براؤزر سیشن میں شامل ہو گیا ہے۔ اسے عوامی طور پر شائع نہیں کیا گیا۔')
-      : tr('Sample reviews show the layout. They are not verified customer testimonials.', 'یہ نمونہ تبصرے صرف ویب سائٹ کا انداز دکھاتے ہیں؛ یہ تصدیق شدہ صارفین کے تبصرے نہیں ہیں۔');
+    status.setAttribute('role', 'status');
+    const message = hasSubmitted
+      ? bilingual('span', 'review-status-copy', 'Your review was added to this browser session. It has not been posted publicly.', 'آپ کا تبصرہ اسی براؤزر سیشن میں شامل ہو گیا ہے۔ اسے عوامی طور پر شائع نہیں کیا گیا۔')
+      : bilingual('span', 'review-status-copy', 'Sample reviews demonstrate the layout. They are not verified customer testimonials.', 'یہ نمونہ تبصرے صرف ویب سائٹ کا انداز دکھاتے ہیں؛ یہ تصدیق شدہ صارفین کے تبصرے نہیں ہیں۔');
+    status.replaceChildren(message);
   }
 
   function renderReviews() {
     if (!reviewTrack) return;
     reviewTrack.replaceChildren(...[...sessionReviews, ...sampleReviews].map(createReview));
-    // Both LTR and RTL tracks begin at scrollLeft 0. Navigation itself uses
-    // scrollIntoView, so it does not depend on browsers' RTL scroll conventions.
     reviewTrack.scrollTo({ left: 0, behavior: 'instant' });
     currentIndex = 0;
     scheduleReviewUpdate();
     updateReviewStatus();
   }
 
-  function renderLocalizedContent() {
-    const focusedRole = document.activeElement?.closest?.('[data-team-role]')?.dataset.teamRole;
-    if (teamGrid) teamGrid.replaceChildren(...profiles.map(createProfile));
-    if (focusedRole) teamGrid?.querySelector(`[data-team-role="${focusedRole}"]`)?.focus({ preventScroll: true });
-    renderReviews();
-    if (reviewForm) {
-      for (const field of [reviewName, reviewRating, reviewMessage]) {
-        if (field?.validity.customError) field.setCustomValidity(validationMessage(field));
-      }
-    }
-    const status = document.querySelector('#review-status');
-    if (status) status.textContent = '';
-  }
-
   function validationMessage(field) {
-    if (field === reviewName && !field.value.trim()) return tr('Please enter your name.', 'براہِ کرم اپنا نام لکھیں۔');
-    if (field === reviewMessage && field.value.trim().length < 20) return tr('Please write at least 20 characters about your experience.', 'براہِ کرم اپنے تجربے کے بارے میں کم از کم ۲۰ حروف لکھیں۔');
-    if (field === reviewRating && !/^[1-5]$/.test(field.value)) return tr('Please choose a rating from 1 to 5.', 'براہِ کرم ۱ سے ۵ تک درجہ بندی منتخب کریں۔');
+    if (field === reviewName && !field.value.trim()) return 'Please enter your name.\nبراہِ کرم اپنا نام لکھیں۔';
+    if (field === reviewMessage && field.value.trim().length < 20) return 'Please write at least 20 characters about your experience.\nبراہِ کرم اپنے تجربے کے بارے میں کم از کم ۲۰ حروف لکھیں۔';
+    if (field === reviewRating && !/^[1-5]$/.test(field.value)) return 'Please choose a rating from 1 to 5.\nبراہِ کرم ۱ سے ۵ تک درجہ بندی منتخب کریں۔';
     return '';
   }
 
@@ -287,8 +283,7 @@
   });
 
   reviewForm?.addEventListener('invalid', event => {
-    const field = event.target;
-    if (typeof field.setCustomValidity === 'function') field.setCustomValidity(validationMessage(field));
+    if (typeof event.target.setCustomValidity === 'function') event.target.setCustomValidity(validationMessage(event.target));
   }, true);
 
   reviewForm?.addEventListener('input', event => {
@@ -334,10 +329,7 @@
   if (reviewTrack && 'ResizeObserver' in window) new ResizeObserver(scheduleReviewUpdate).observe(reviewTrack);
   window.addEventListener('resize', scheduleReviewUpdate, { passive: true });
   document.fonts?.ready.then(scheduleReviewUpdate);
-  document.addEventListener('languagechange', event => {
-    const language = event.detail?.language;
-    if (language === 'en' || language === 'ur') window.SF_LANG = language;
-    renderLocalizedContent();
-  });
-  renderLocalizedContent();
+
+  if (teamGrid) teamGrid.replaceChildren(...profiles.map(createProfile));
+  renderReviews();
 })();
