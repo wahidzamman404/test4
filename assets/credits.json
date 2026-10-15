@@ -1,0 +1,186 @@
+[
+  {
+    "files": [
+      "assets/dm-sans-regular.woff2",
+      "assets/dm-sans-medium.woff2"
+    ],
+    "family": "DM Sans",
+    "source": "https://www.npmjs.com/package/@fontsource/dm-sans",
+    "licence": "SIL Open Font License 1.1",
+    "licence_file": "assets/dm-sans-LICENSE.txt",
+    "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
+  },
+  {
+    "files": [
+      "assets/cormorant-regular.woff2",
+      "assets/cormorant-italic.woff2"
+    ],
+    "family": "Cormorant Garamond",
+    "source": "https://www.npmjs.com/package/@fontsource/cormorant-garamond",
+    "licence": "SIL Open Font License 1.1",
+    "licence_file": "assets/cormorant-garamond-LICENSE.txt",
+    "usage_note": "Local fonts and supplied licence copied from the existing Shahbaz Furniture site."
+  },
+  {
+    "files": [
+      "assets/fonts/noto-nastaliq-urdu-arabic-400-normal.woff2",
+      "assets/fonts/noto-nastaliq-urdu-arabic-600-normal.woff2"
+    ],
+    "family": "Noto Nastaliq Urdu",
+    "source": "https://www.npmjs.com/package/@fontsource/noto-nastaliq-urdu",
+    "package_version": "5.3.0",
+    "licence": "SIL Open Font License 1.1",
+    "licence_file": "assets/fonts/noto-nastaliq-urdu-OFL.txt",
+    "integrity_note": "Downloaded package tarball matched registry SHA-512 integrity."
+  },
+  {
+    "file": "design-1.jpg",
+    "description": "Original Pakistani Chiniot carved sheesham bedroom suite concept with an arched floral headboard, matching bedside tables and cream linen.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-62b9bd96-5dca-4b4b-92d8-348a6da16c46.png",
+    "size": {
+      "width": 1200,
+      "height": 900
+    },
+    "bytes": 247039,
+    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
+  },
+  {
+    "file": "design-2.jpg",
+    "description": "Original Pakistani carved sheesham six-seat rectangular dining set concept with cream upholstered chairs.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-b3050888-2fdb-4af0-9db3-37fb36fc5c9f.png",
+    "size": {
+      "width": 1200,
+      "height": 900
+    },
+    "bytes": 243782,
+    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
+  },
+  {
+    "file": "design-3.jpg",
+    "description": "Original Pakistani baithak concept with a carved sheesham sofa, matching armchairs, coffee table, cream upholstery and a small Ajrak-style fabric accent.",
+    "source": "original_generated",
+    "png_path": "/workspace/generated_images/exec-9cf190c4-aebb-4449-87c6-ac56f93c1ad9.png",
+    "size": {
+      "width": 1200,
+      "height": 900
+    },
+    "bytes": 246054,
+    "usage_note": "AI-generated Pakistani furniture design concept. Not an actual completed project, customer photograph or verified product listing."
+  },
+  {
+    "file": "design-4.jpg",
+    "description": "Original generated Pakistani handwoven rope charpai with carved sheesham legs in a warm aangan courtyard",
+    "source": "original generated",
+    "PNGpath": "/workspace/generated_images/exec-35d2e5d9-9e6b-4303-be99-72d31496b469.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 211501,
+    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
+  },
+  {
+    "file": "design-5.jpg",
+    "description": "Original generated traditional Pakistani three-door carved sheesham wardrobe",
+    "source": "original generated",
+    "PNGpath": "/workspace/generated_images/exec-213fe55e-4a76-48ce-bb8d-4e1269b8c235.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 207928,
+    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
+  },
+  {
+    "file": "design-6.jpg",
+    "description": "Original generated Pakistani carved sheesham front door with brass handle and traditional jali surround",
+    "source": "original generated",
+    "PNGpath": "/workspace/generated_images/exec-7552de98-e432-49b5-a379-808e84f9906f.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 218191,
+    "usage_note": "AI-generated Pakistani furniture design concept; not an actual customer project or photograph of Shahbaz Furniture work."
+  },
+  {
+    "file": "assets/design-7.jpg",
+    "source": "original_generated",
+    "description": "Traditional Pakistani carved sheesham-inspired study desk and coordinated chair, with brass drawer pulls, cream plaster room, jali window and subtle Ajrak textile.",
+    "png_path": "/workspace/generated_images/exec-fd91d474-ffe8-4ba0-8dc2-8249db2a0d41.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 250437,
+    "sha256": "1dbbd4f8f88c1fc00fd5966b42afe163b9be3323479c74530fcb3d6b9a48d52a",
+    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
+  },
+  {
+    "file": "assets/design-8.jpg",
+    "source": "original_generated",
+    "description": "Traditional Chiniot-style two-door timber console with intricate carved jali cabinet doors, carved apron, brass handles and turned feet.",
+    "png_path": "/workspace/generated_images/exec-774a00e8-fa8e-4fff-b93f-236e287cf17e.png",
+    "size": [
+      1200,
+      900
+    ],
+    "bytes": 240613,
+    "sha256": "8f7c0c1f4298283fca36e7a9c1098e2e92cca1a6d887723a5d778705147b9dda",
+    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
+  },
+  {
+    "file": "assets/hero.jpg",
+    "source": "original_generated",
+    "description": "Refined Pakistani family baithak/aangan with coordinated classic carved timber sofa, two armchairs, timber coffee table, cream cushions, Ajrak accents and a charpai.",
+    "png_path": "/workspace/generated_images/exec-c044d8e3-127a-457a-9e72-9c903900fe5b.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 388051,
+    "sha256": "742f64e5ce67d4840d3ebb9ea31c75a9e8c748e66f1c72cea17a244fabe74a99",
+    "usage_note": "Original AI-generated Pakistani furniture design concept, not an actual Shahbaz Furniture product, customer home, completed project or photograph."
+  },
+  {
+    "file": "assets/staff-designer.jpg",
+    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
+    "description": "A fictional Pakistani female furniture designer in a warm timber design studio.",
+    "original_generated_file": "/workspace/generated_images/exec-50119cf0-3965-48ae-8a4e-6e73e8e3dc8f.png",
+    "size": [
+      700,
+      700
+    ],
+    "bytes": 89675,
+    "sha256": "455453fb6277920828e1fae6452e314abe8195a5c02e594eb046ac9dc4cf9c8d",
+    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
+  },
+  {
+    "file": "assets/staff-maker.jpg",
+    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
+    "description": "A fictional middle-aged Pakistani male timber artisan in a warm carpentry workshop.",
+    "original_generated_file": "/workspace/generated_images/exec-b6543e43-4b32-4f99-a6d4-6e54856b05fb.png",
+    "size": [
+      700,
+      700
+    ],
+    "bytes": 111737,
+    "sha256": "65bac2158de97ae6e3c74e6467b710210537e33682cc5abbb48da1b4c7a364c1",
+    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
+  },
+  {
+    "file": "assets/staff-support.jpg",
+    "source": "Original image generated using OpenAI image generation for Shahbaz Furniture v2",
+    "description": "A fictional young adult Pakistani male project coordinator in a contemporary furniture studio.",
+    "original_generated_file": "/workspace/generated_images/exec-aa6efb71-2214-4b68-a78d-ce11ef6bebef.png",
+    "size": [
+      700,
+      700
+    ],
+    "bytes": 88060,
+    "sha256": "e323fa3105d5cd43dd831416102d3deadffebfe75f488a39d714e777d039a171",
+    "usage_note": "Fictional AI-generated demonstration portrait, not a photo of an actual Shahbaz Furniture employee or any real person. Intended for clearly labelled sample team roles."
+  }
+]
